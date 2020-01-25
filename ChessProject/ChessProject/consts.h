@@ -5,6 +5,10 @@
 #define WHITE 0
 #define BLACK 1
 
+// BOARD
+#define LAYOUT "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR0"
+#define BOARD_SIZE 8
+
 // move codes
 #define VALID 0
 #define VALID_CHECK 1
