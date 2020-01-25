@@ -1,6 +1,11 @@
 #include "piece.h"
 
 
+char piece::getSymbol()
+{
+	return this->symbol;
+}
+
 /*
 get function for the color property
 */
@@ -39,6 +44,7 @@ the constactor function for the piece class
 */
 piece::piece(int color, int x, int y)
 {
+	//TODO get symbol from Enum
 	this->color = color;
 
 	this->x = x;
