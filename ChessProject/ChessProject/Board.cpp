@@ -3,9 +3,9 @@
 Board::Board(std::string startingBoard)
 {
 	// make the 2d array
-	this->board = new char*[BOARD_SIZE];
-	for (int i = 0; i < BOARD_SIZE; i++){
-		this->board[i] = new char[BOARD_SIZE];
+	this->board = new Piece * [BOARD_SIZE];
+	for (int i = 0; i < BOARD_SIZE; i++) {
+		this->board[i] = new Piece[BOARD_SIZE]();
 	}
 
 	// parse string to array
@@ -13,7 +13,27 @@ Board::Board(std::string startingBoard)
 	{
 		for (int y = 0; y < BOARD_SIZE; y++)
 		{
-			//TODO: make enum of Pieces that show their char and make Pieces objects
+			//TODO: fix all of this logic
+			char curentChar = startingBoard[(x * BOARD_SIZE) + y];
+
+			switch (tolower(curentChar))
+			{
+			case king:
+				break;
+			case queen:
+				break;
+			case rook:
+				break;
+			case Bishop:
+				break;
+			case knight:
+				break;
+			case pawn:
+				break;
+			default:
+				this->board[x][y] = nullptr;
+				break;
+			}
 		}
 	}
 
@@ -47,8 +67,16 @@ int Board::getPlayerTurn()
 	return this->playerTurn;
 }
 
-bool Board::updateBoard(std::string newPos)
+Piece Board::getSlot(int dstX, int dstY)
+{
+	return this->board[dstX][dstY];
+}
+
+bool Board::updateBoard(int srcX, int srcY, int dstX, int dstY)
 {
 	//TODO
+	this->board[srcX][srcY] = this->board[dstX][dstY];
+	delete this->board[dstX][dstY];
+	this->board[dstX][dstY] = nullptr;
 	return false;
 }

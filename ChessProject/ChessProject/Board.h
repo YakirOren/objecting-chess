@@ -18,8 +18,9 @@ public:
 
 	// getters
 	int getPlayerTurn();
+	Piece getSlot(int dstX, int dstY);
 
 	// setters
-	bool updateBoard(std::string newPos);
+	bool updateBoard(int srcX, int srcY, int dstX, int dstY);
 };
 
