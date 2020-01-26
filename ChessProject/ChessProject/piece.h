@@ -3,6 +3,7 @@
 #include "board.h"
 
 
+
 class Piece
 {
 protected:
@@ -23,10 +24,12 @@ public:
 	int getY(); 
 	int getColor();
 	
-
+	void setSymbol(char symbol);
+	void setColor(int color);
 	void setPos(int x, int y);
 
-	Piece(int color, int x, int y);
+	Piece(int color, int x, int y,char symbol);
+	Piece();
 	~Piece();
 };
 

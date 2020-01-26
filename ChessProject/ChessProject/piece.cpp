@@ -1,6 +1,8 @@
 #include "Piece.h"
 
-
+/*
+get function for the symbol property
+*/
 char Piece::getSymbol()
 {
 	return this->symbol;
@@ -31,6 +33,23 @@ int Piece::getY()
 }
 
 /*
+set function for this Piece symbol
+*/
+void Piece::setSymbol(char symbol)
+{
+	this->symbol = symbol;
+}
+
+/*
+set function for the color of this Piece
+*/
+void Piece::setColor(int color)
+{
+	this->color = color;
+}
+
+
+/*
 set function for the x,y cords of this Piece
 */
 void Piece::setPos(int x, int y)
@@ -42,13 +61,27 @@ void Piece::setPos(int x, int y)
 /*
 the constactor function for the Piece class
 */
-Piece::Piece(int color, int x, int y)
+Piece::Piece(int color, int x , int y , char symbol)
 {
 	//TODO get symbol from Enum
 	this->color = color;
 
 	this->x = x;
-	this->y = y;	
+	this->y = y;
+	this->symbol = symbol;
+}
+
+
+/*
+a constractor function to create an 'empty' piece
+*/
+Piece::Piece()
+{
+	this->color = NULL;
+	this->x = NULL;
+	this->y = NULL;
+	this->symbol = NULL;
+
 }
 
 

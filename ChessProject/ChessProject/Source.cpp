@@ -19,7 +19,6 @@ void main()
 {
 	srand(time_t(NULL));
 
-	
 	Pipe p;
 	bool isConnect = p.connect();
 	

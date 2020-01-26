@@ -9,6 +9,7 @@ class Rook :
 	bool canMoveTo(Board chess, int dstX, int dstY);
 	bool isCheck() const;
 	bool isThreatening() const;
+	
 
 	~Rook();
 

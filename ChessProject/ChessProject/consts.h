@@ -19,3 +19,13 @@
 #define INVALID_Piece_MOVE 6
 #define INVALID_DST_IS_SRC 7
 #define VALID_CHECKMATE 8
+
+enum symbol
+{
+	king = 'k',
+	queen = 'q',
+	rook = 'r',
+	Bishop = 'b',
+	knight = 'n',
+	pawn = 'p',
+};
