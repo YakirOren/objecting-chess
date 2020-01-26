@@ -12,12 +12,12 @@ protected:
 	int y;
 	char symbol;
 
-
+	
 public:
-	virtual bool canMoveTo(Board chess,int dstX, int dstY) const = 0;
-	virtual bool isCheck() const = 0;
-	virtual bool isThreatening() const = 0;
-	virtual void draw() const = 0;
+	virtual bool canMoveTo(Board chess,int dstX, int dstY) const;
+	virtual bool isCheck() const ;
+	virtual bool isThreatening() const;
+	virtual void draw() const;
 	
 	char getSymbol();
 	int getX(); 

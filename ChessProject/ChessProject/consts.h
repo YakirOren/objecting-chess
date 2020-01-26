@@ -25,7 +25,7 @@ enum symbol
 	king = 'k',
 	queen = 'q',
 	rook = 'r',
-	Bishop = 'b',
+	bishop = 'b',
 	knight = 'n',
 	pawn = 'p',
 };

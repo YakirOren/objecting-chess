@@ -3,6 +3,26 @@
 /*
 get function for the symbol property
 */
+bool Piece::canMoveTo(Board chess, int dstX, int dstY) const
+{
+	return false;
+}
+
+bool Piece::isCheck() const
+{
+	return false;
+}
+
+bool Piece::isThreatening() const
+{
+	return false;
+}
+
+void Piece::draw() const
+{
+	
+}
+
 char Piece::getSymbol()
 {
 	return this->symbol;
