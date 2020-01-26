@@ -1,8 +1,8 @@
 #pragma once
-#include "piece.h"
+#include "Piece.h"
 
 class Rook :
-	public piece
+	public Piece
 {
 	Rook(int color, int x, int y);
 

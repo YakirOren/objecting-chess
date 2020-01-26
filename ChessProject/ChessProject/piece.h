@@ -3,7 +3,7 @@
 #include "board.h"
 
 
-class piece
+class Piece
 {
 protected:
 	int color; //0 white 1 black
@@ -17,16 +17,16 @@ public:
 	virtual bool isCheck() const = 0;
 	virtual bool isThreatening() const = 0;
 	virtual void draw() const = 0;
-
 	
 	char getSymbol();
+	int getX(); 
+	int getY(); 
 	int getColor();
-	int getX();
-	int getY();
 	
+
 	void setPos(int x, int y);
 
-	piece(int color, int x, int y);
-	~piece();
+	Piece(int color, int x, int y);
+	~Piece();
 };
 

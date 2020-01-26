@@ -1,7 +1,7 @@
 #pragma once
 #include "consts.h"
 #include "stdafx.h"
-
+#include "Piece.h"
 
 class Board
 {

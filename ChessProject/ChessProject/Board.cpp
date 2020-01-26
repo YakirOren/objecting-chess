@@ -13,7 +13,7 @@ Board::Board(std::string startingBoard)
 	{
 		for (int y = 0; y < BOARD_SIZE; y++)
 		{
-			//TODO: make enum of pieces that show their char and make pieces objects
+			//TODO: make enum of Pieces that show their char and make Pieces objects
 		}
 	}
 

@@ -1,7 +1,7 @@
-#include "piece.h"
+#include "Piece.h"
 
 
-char piece::getSymbol()
+char Piece::getSymbol()
 {
 	return this->symbol;
 }
@@ -9,40 +9,40 @@ char piece::getSymbol()
 /*
 get function for the color property
 */
-int piece::getColor()
+int Piece::getColor()
 {
 	return this->color;
 }
 
 /*
-get function for the x cord for this piece
+get function for the x cord for this Piece
 */
-int piece::getX()
+int Piece::getX()
 {
 	return this->x;
 }
 
 /*
-get function for the y cord for this piece
+get function for the y cord for this Piece
 */
-int piece::getY()
+int Piece::getY()
 {
 	return this->y;
 }
 
 /*
-set function for the x,y cords of this piece
+set function for the x,y cords of this Piece
 */
-void piece::setPos(int x, int y)
+void Piece::setPos(int x, int y)
 {
 	this->x = x;
 	this->y = y;
 }
 
 /*
-the constactor function for the piece class
+the constactor function for the Piece class
 */
-piece::piece(int color, int x, int y)
+Piece::Piece(int color, int x, int y)
 {
 	//TODO get symbol from Enum
 	this->color = color;
@@ -52,8 +52,7 @@ piece::piece(int color, int x, int y)
 }
 
 
-piece::~piece()
+Piece::~Piece()
 {
 }
-
 
