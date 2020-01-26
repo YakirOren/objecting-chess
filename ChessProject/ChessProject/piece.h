@@ -18,6 +18,8 @@ public:
 	virtual bool isThreatening() const;
 	virtual void draw() const;
 	
+	
+	Piece& operator= (Piece& other);
 	char getSymbol();
 	int getX(); 
 	int getY(); 

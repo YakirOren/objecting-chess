@@ -23,6 +23,16 @@ void Piece::draw() const
 	
 }
 
+Piece& Piece::operator= (Piece& other)
+{
+	this->color = other.getColor();
+	this->symbol = other.getSymbol();
+	this->x = other.getX();
+	this->y = other.getY();
+
+	return *this;
+}
+
 char Piece::getSymbol()
 {
 	return this->symbol;
