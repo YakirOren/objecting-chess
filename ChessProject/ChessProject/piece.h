@@ -1,6 +1,5 @@
 #pragma once
-#include "consts.h"
-#include "board.h"
+#include "ath.h"
 
 
 

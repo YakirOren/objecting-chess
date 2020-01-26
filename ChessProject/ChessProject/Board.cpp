@@ -2,33 +2,33 @@
 
 Board::Board(std::string startingBoard)
 {
-	// make the 2d array
-	this->board = new Piece * [BOARD_SIZE];
-	for (int i = 0; i < BOARD_SIZE; i++) {
-		this->board[i] = new Piece[BOARD_SIZE]();
-	}
-
 	// parse string to array
 	for (int x = 0; x < BOARD_SIZE; x++)
 	{
 		for (int y = 0; y < BOARD_SIZE; y++)
 		{
-			//TODO: fix all of this logic
+			//TODO: fix the operator= error
 			char curentChar = startingBoard[(x * BOARD_SIZE) + y];
 
 			switch (tolower(curentChar))
 			{
 			case king:
+				this->board[x][y] = new King(x, y, isupper(curentChar) ? BLACK : WHITE);
 				break;
 			case queen:
+				//this->board[x][y] = new Queen(x, y, isupper(curentChar) ? BLACK : WHITE);
 				break;
 			case rook:
+				this->board[x][y] = new Rook(x, y, isupper(curentChar) ? BLACK : WHITE);
 				break;
-			case Bishop:
+			case bishop:
+				this->board[x][y] = new Bishop(x, y, isupper(curentChar) ? BLACK : WHITE);
 				break;
 			case knight:
+				this->board[x][y] = new Knight(x, y, isupper(curentChar) ? BLACK : WHITE);
 				break;
 			case pawn:
+				//this->board[x][y] = new Pawn(x, y, isupper(curentChar) ? BLACK : WHITE);
 				break;
 			default:
 				this->board[x][y] = nullptr;
@@ -43,10 +43,12 @@ Board::Board(std::string startingBoard)
 
 Board::~Board()
 {
-	for (int i = 0; i < BOARD_SIZE; i++) {
-		delete[] this->board[i];
+	for (int x = 0; x < BOARD_SIZE; x++)
+	{
+		for (int y = 0; y < BOARD_SIZE; y++) {
+			delete[] this->board[i];
+		}
 	}
-	delete[] this->board;
 }
 
 void Board::draw()
@@ -74,9 +76,10 @@ Piece Board::getSlot(int dstX, int dstY)
 
 bool Board::updateBoard(int srcX, int srcY, int dstX, int dstY)
 {
+	bool gotUpdated = false;
 	//TODO
-	this->board[srcX][srcY] = this->board[dstX][dstY];
-	delete this->board[dstX][dstY];
-	this->board[dstX][dstY] = nullptr;
-	return false;
+	//this->board[srcX][srcY] = this->board[dstX][dstY];
+	//delete[] this->board[dstX][dstY];
+	//this->board[dstX][dstY] = nullptr;
+	return gotUpdated;
 }

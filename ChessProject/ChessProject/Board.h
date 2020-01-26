@@ -1,12 +1,11 @@
 #pragma once
-#include "consts.h"
+#include "ath.h"
 #include "stdafx.h"
-#include "Piece.h"
 
 class Board
 {
 private:
-	Piece** board;
+	Piece board[BOARD_SIZE][BOARD_SIZE];
 	int playerTurn;
 
 public:

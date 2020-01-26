@@ -1,10 +1,10 @@
 #pragma once
-#include "piece.h"
+#include "ath.h"
 
 class Bishop :
 	public Piece
 {
-
+public:
 	Bishop(int x, int y, int color);
 	~Bishop();
 
