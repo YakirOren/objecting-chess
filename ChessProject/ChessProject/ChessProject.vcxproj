@@ -118,6 +118,7 @@
     <ClInclude Include="ath.h" />
     <ClInclude Include="Bishop.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="chessUtills.h" />
     <ClInclude Include="consts.h" />
     <ClInclude Include="King.h" />
     <ClInclude Include="Knight.h" />
@@ -132,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="Bishop.cpp" />
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="chessUtills.cpp" />
     <ClCompile Include="King.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Pawn.cpp" />

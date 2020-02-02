@@ -3,10 +3,17 @@
 Rook::Rook(int x, int y, int color) : Piece(color, x, y, rook)
 {
 	
+
+	
 }
 
 bool Rook::canMoveTo(Piece*** board, int dstX, int dstY)
 {
+
+	if ((dstX == this->getX())) {
+
+	}
+
 	
 
 	return false;
