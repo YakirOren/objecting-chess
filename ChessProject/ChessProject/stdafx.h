@@ -12,6 +12,7 @@
 #include <tchar.h>
 #include <ctype.h>
 #include <thread>
+#include <vector>
 
 
 

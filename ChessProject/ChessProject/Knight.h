@@ -10,7 +10,7 @@ public:
 
 	bool canMoveTo(Piece*** board, int dstX, int dstY);
 	bool isCheck() const;
-	bool isThreatening() const;
+	std::vector<char>* isThreatening() const;
 
 
 };

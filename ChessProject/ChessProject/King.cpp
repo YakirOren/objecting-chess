@@ -20,9 +20,10 @@ bool King::isCheck() const
 	return false;
 }
 
-bool King::isThreatening() const
+std::vector<char>* King::isThreatening() const
 {
-	return false;
+	std::vector<char>* temp = new std::vector<char>;
+	return temp;
 }
 
 void King::draw() const

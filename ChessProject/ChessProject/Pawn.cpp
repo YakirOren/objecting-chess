@@ -18,9 +18,10 @@ bool Pawn::isCheck() const
 	return false;
 }
 
-bool Pawn::isThreatening() const
+std::vector<char>* Pawn::isThreatening() const
 {
-	return false;
+	std::vector<char>* temp = new std::vector<char>;
+	return temp;
 }
 
 void Pawn::draw() const

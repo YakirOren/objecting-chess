@@ -22,21 +22,36 @@ int main()
 	srand(time_t(NULL));
 
 	Pipe* p = chessUtills::initBoard();
-	//game loop
-	int response = 1;
-	string msgFromGraphics = p->getMessageFromGraphics();
-	int* a = {0};
-	string retCode;
-
-	while (response != 0)
+	if (p == nullptr)
 	{
-		a = chessUtills::parseGuiResponse(msgFromGraphics);
-		
-		//logics
-
-		response = chessUtills::sendMsg(p, retCode);
-
+		system("pause");
+		return 0;
 	}
 
+	Board board(BOARD_LAYOUT);
+	int response = 1;
+	string msgFromGraphics = p->getMessageFromGraphics();
+	int* boardCords = nullptr;
+	string retCode = "";
 
+	//game loop
+	while (response != 0)
+	{
+		boardCords = chessUtills::parseGuiResponse(msgFromGraphics);
+		
+		if (board(boardCords[0], boardCords[1]) != nullptr)
+		{
+			//TODO check all the codes
+		}
+		else
+		{
+			retCode = invalid_src_is_not_piece;
+		}
+
+		response = chessUtills::sendMsg(p, retCode);
+		delete[] boardCords;
+	}
+
+	system("pause");
+	return 0;
 }

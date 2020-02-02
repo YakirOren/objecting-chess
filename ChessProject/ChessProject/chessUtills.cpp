@@ -66,11 +66,7 @@ Pipe* chessUtills::initBoard()
 
 	p->sendMessageToGraphics((char*)BOARD_LAYOUT);   // send the board string
 
-	
-
 	return p;
-
-
 }
 
 void chessUtills::closePipe(Pipe* p)

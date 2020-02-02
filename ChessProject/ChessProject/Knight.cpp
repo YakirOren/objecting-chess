@@ -14,8 +14,9 @@ bool Knight::isCheck() const
 	return false;
 }
 
-bool Knight::isThreatening() const
+std::vector<char>* Knight::isThreatening() const
 {
-	return false;
+	std::vector<char>* temp = new std::vector<char>;
+	return temp;
 }
 

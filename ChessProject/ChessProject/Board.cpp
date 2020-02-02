@@ -77,9 +77,14 @@ int Board::getPlayerTurn() const
 	return this->playerTurn;
 }
 
-Piece Board::getSlot(int dstX, int dstY) const
+Piece* Board::operator()(int dstX, int dstY) const
 {
-	return *(this->board[dstX][dstY]);
+	return this->board[dstX][dstY];
+}
+
+void Board::nextTurn()
+{
+	this->playerTurn = !this->playerTurn;
 }
 
 bool Board::updateBoard(int srcX, int srcY, int dstX, int dstY)

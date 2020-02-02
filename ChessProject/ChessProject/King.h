@@ -11,7 +11,7 @@ public:
 
 	bool canMoveTo(Piece*** board, int dstX, int dstY) const;
 	bool isCheck() const;
-	bool isThreatening() const;
+	std::vector<char>* isThreatening() const;
 	void draw() const;
 	
 

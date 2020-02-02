@@ -18,9 +18,10 @@ bool Bishop::isCheck() const
 	return false;
 }
 
-bool Bishop::isThreatening() const
+std::vector<char>* Bishop::isThreatening() const
 {
-	return false;
+	std::vector<char>* temp = new std::vector<char>;
+	return temp;
 }
 
 void Bishop::draw() const

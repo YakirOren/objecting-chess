@@ -17,8 +17,9 @@ public:
 
 	// getters
 	int getPlayerTurn() const;
-	Piece getSlot(int dstX, int dstY) const;
+	Piece* operator()(int dstX, int dstY) const;
 
 	// setters
+	void nextTurn();
 	bool updateBoard(int srcX, int srcY, int dstX, int dstY);
 };

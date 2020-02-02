@@ -13,9 +13,10 @@ bool Piece::isCheck() const
 	return false;
 }
 
-bool Piece::isThreatening() const
+std::vector<char>* Piece::isThreatening() const
 {
-	return false;
+	std::vector<char>* temp = new std::vector<char>;
+	return temp;
 }
 
 void Piece::draw() const

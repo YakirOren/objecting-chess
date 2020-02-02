@@ -18,9 +18,10 @@ bool Queen::isCheck() const
 	return false;
 }
 
-bool Queen::isThreatening() const
+std::vector<char>* Queen::isThreatening() const
 {
-	return false;
+	std::vector<char>* temp = new std::vector<char>;
+	return temp;
 }
 
 void Queen::draw() const
