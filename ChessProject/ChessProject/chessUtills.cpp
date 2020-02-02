@@ -66,9 +66,9 @@ Pipe* chessUtills::initBoard()
 
 	p->sendMessageToGraphics((char*)BOARD_LAYOUT);   // send the board string
 
-	string msgFromGraphics = p->getMessageFromGraphics();
+	
 
-	return msgFromGraphics != "quit" ? p : nullptr;
+	return p;
 
 
 }

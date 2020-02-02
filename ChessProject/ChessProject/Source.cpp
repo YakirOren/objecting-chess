@@ -18,15 +18,23 @@ using std::string;
 
 int main()
 {
+	//system("..\\..\\chessGraphics.exe");
 	srand(time_t(NULL));
 
-	Pipe* pip = chessUtills::initBoard();
+	Pipe* p = chessUtills::initBoard();
 	//game loop
 	int response = 1;
+	string msgFromGraphics = p->getMessageFromGraphics();
+	int* a = {0};
+	string retCode;
 
 	while (response != 0)
 	{
-		response = chessUtills::sendMsg(pip, "e4b4");
+		a = chessUtills::parseGuiResponse(msgFromGraphics);
+		
+		//logics
+
+		response = chessUtills::sendMsg(p, retCode);
 
 	}
 
