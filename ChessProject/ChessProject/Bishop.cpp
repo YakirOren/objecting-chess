@@ -8,7 +8,7 @@ Bishop::~Bishop()
 {
 }
 
-bool Bishop::canMoveTo(Board chess, int dstX, int dstY) const
+bool Bishop::canMoveTo(Piece*** board, int dstX, int dstY) const
 {
 	return false;
 }

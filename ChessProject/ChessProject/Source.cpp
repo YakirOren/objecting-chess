@@ -5,17 +5,16 @@ in order to read and write information from and to the Backend
 */
 
 #include "Pipe.h"
-#include <iostream>
-#include <thread>
-
-#include "consts.h"
+#include "stdafx.h"
+#include "ath.h"
+#include "Board.h"
 
 using std::cout;
 using std::endl;
 using std::string;
 
 
-void main()
+int main()
 {
 	srand(time_t(NULL));
 
@@ -47,7 +46,7 @@ void main()
 	// msgToGraphics should contain the board string accord the protocol
 	// YOUR CODE
 
-	strcpy_s(msgToGraphics, LAYOUT); // just example...
+	strcpy_s(msgToGraphics, BOARD_LAYOUT);
 	
 	p.sendMessageToGraphics(msgToGraphics);   // send the board string
 

@@ -5,7 +5,7 @@
 class Board
 {
 private:
-	Piece board[BOARD_SIZE][BOARD_SIZE];
+	Piece*** board;
 	int playerTurn;
 
 public:
@@ -13,13 +13,12 @@ public:
 	~Board();
 
 	// misc
-	void draw();
+	void draw() const;
 
 	// getters
-	int getPlayerTurn();
-	Piece getSlot(int dstX, int dstY);
+	int getPlayerTurn() const;
+	Piece getSlot(int dstX, int dstY) const;
 
 	// setters
 	bool updateBoard(int srcX, int srcY, int dstX, int dstY);
 };
-

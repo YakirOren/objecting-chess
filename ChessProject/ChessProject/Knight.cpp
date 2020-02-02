@@ -4,7 +4,7 @@ Knight::Knight(int x, int y, int color) : Piece(color, x, y, knight)
 {
 }
 
-bool Knight::canMoveTo(Board chess, int dstX, int dstY)
+bool Knight::canMoveTo(Piece*** board, int dstX, int dstY)
 {
 	return false;
 }

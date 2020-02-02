@@ -3,7 +3,7 @@
 /*
 get function for the symbol property
 */
-bool Piece::canMoveTo(Board chess, int dstX, int dstY) const
+bool Piece::canMoveTo(Piece*** board, int dstX, int dstY) const
 {
 	return false;
 }
@@ -33,7 +33,7 @@ Piece& Piece::operator= (Piece& other)
 	return *this;
 }
 
-char Piece::getSymbol()
+char Piece::getSymbol() const
 {
 	return this->symbol;
 }
@@ -41,7 +41,7 @@ char Piece::getSymbol()
 /*
 get function for the color property
 */
-int Piece::getColor()
+int Piece::getColor() const
 {
 	return this->color;
 }
@@ -49,7 +49,7 @@ int Piece::getColor()
 /*
 get function for the x cord for this Piece
 */
-int Piece::getX()
+int Piece::getX() const
 {
 	return this->x;
 }
@@ -57,7 +57,7 @@ int Piece::getX()
 /*
 get function for the y cord for this Piece
 */
-int Piece::getY()
+int Piece::getY() const
 {
 	return this->y;
 }
@@ -98,7 +98,7 @@ Piece::Piece(int color, int x , int y , char symbol)
 
 	this->x = x;
 	this->y = y;
-	this->symbol = symbol;
+	this->symbol = this->color == white ? tolower(symbol) : toupper(symbol);
 }
 
 

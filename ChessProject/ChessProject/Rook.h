@@ -1,5 +1,6 @@
 #pragma once
-#include "ath.h"
+#include "consts.h"
+#include "Piece.h"
 
 class Rook :
 	public Piece
@@ -7,7 +8,7 @@ class Rook :
 public:
 	Rook(int x, int y, int color);
 
-	bool canMoveTo(Board chess, int dstX, int dstY);
+	bool canMoveTo(Piece*** board, int dstX, int dstY);
 	bool isCheck() const;
 	bool isThreatening() const;
 	

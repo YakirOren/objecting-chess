@@ -1,6 +1,6 @@
 #pragma once
-#include "ath.h"
-
+#include "consts.h"
+#include "stdafx.h"
 
 
 class Piece
@@ -13,17 +13,17 @@ protected:
 
 	
 public:
-	virtual bool canMoveTo(Board chess,int dstX, int dstY) const;
+	virtual bool canMoveTo(Piece*** board,int dstX, int dstY) const;
 	virtual bool isCheck() const ;
 	virtual bool isThreatening() const;
 	virtual void draw() const;
 	
 	
 	Piece& operator= (Piece& other);
-	char getSymbol();
-	int getX(); 
-	int getY(); 
-	int getColor();
+	char getSymbol() const;
+	int getX() const;
+	int getY() const;
+	int getColor() const;
 	
 	void setSymbol(char symbol);
 	void setColor(int color);

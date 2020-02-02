@@ -10,7 +10,7 @@ King::~King()
 {
 }
 
-bool King::canMoveTo(Board chess, int dstX, int dstY) const
+bool King::canMoveTo(Piece*** board, int dstX, int dstY) const
 {
 	return false;
 }
