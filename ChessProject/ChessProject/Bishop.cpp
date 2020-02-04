@@ -8,17 +8,17 @@ Bishop::~Bishop()
 {
 }
 
-bool Bishop::canMoveTo(Piece*** board, int dstX, int dstY) const
+bool Bishop::canMoveTo(Board board, int dstX, int dstY) const
 {
 	return false;
 }
 
-bool Bishop::isCheck(Piece*** board) const
+bool Bishop::isCheck(Board board) const
 {
 	return false;
 }
 
-std::vector<char>* Bishop::isThreatening(Piece*** board) const
+std::vector<char>* Bishop::isThreatening(Board board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 	return temp;

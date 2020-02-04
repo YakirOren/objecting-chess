@@ -1,4 +1,5 @@
 #include "Board.h"
+#include "ath.h"
 
 Board::Board(std::string startingBoard)
 {
@@ -9,7 +10,7 @@ Board::Board(std::string startingBoard)
 	for (int x = 0; x < BOARD_SIZE; x++) {
 		this->board[x] = new Piece * [BOARD_SIZE];
 		for (int y = 0; y < BOARD_SIZE; y++) {
-			char curentChar = startingBoard[(x * BOARD_SIZE) + y];
+			char curentChar = startingBoard[((int)x * BOARD_SIZE) + y];
 
 			switch (tolower(curentChar)) {
 			case king:

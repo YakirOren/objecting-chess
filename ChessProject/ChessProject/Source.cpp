@@ -29,17 +29,22 @@ int main()
 	}
 
 	Board board(BOARD_LAYOUT);
-	int response = 1;
+	bool exit = false;
 	string msgFromGraphics = p->getMessageFromGraphics();
-	int* boardCords = nullptr;
-	string retCode = "";
+	int* boardCords = new int[4];
+	string retCode = "1";
 
 	//game loop
-	while (response != 0)
+	while (exit != true)
 	{
-		boardCords = chessUtills::parseGuiResponse(msgFromGraphics);
+		chessUtills::parseGuiResponse(msgFromGraphics, boardCords);
 
 		// check if theres a piece on the src point and its the current player color
+		cout << boardCords[0];
+		cout << boardCords[1];
+		cout << boardCords[2];
+		cout << boardCords[3];
+		cout << endl;
 		if (board(boardCords[0], boardCords[1]) != nullptr &&
 			board(boardCords[0], boardCords[1])->getColor() == board.getPlayerTurn())
 		{
@@ -67,29 +72,30 @@ int main()
 					}
 					else
 					{
-						retCode = invalid_dst_is_src;
+						retCode[0] = invalid_dst_is_src;
 					}
 
 				}
 				else
 				{
-					retCode = invalid_index;
+					retCode[0] = invalid_index;
 				}
 			}
 			else
 			{
-				retCode = invalid_dst_is_current_player;
+				retCode[0] = invalid_dst_is_current_player;
 			}
 		}
 		else
 		{
-			retCode = invalid_src_is_not_piece;
+			retCode[0] = invalid_src_is_not_piece;
 		}
 
-		response = chessUtills::sendMsg(p, retCode);
-		delete[] boardCords;
+		chessUtills::sendMsg(p, retCode);
+		exit = chessUtills::getMsg(p, &msgFromGraphics);
 	}
 
+	delete[] boardCords;
 	system("pause");
 	return 0;
 }

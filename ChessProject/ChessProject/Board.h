@@ -1,7 +1,9 @@
 #pragma once
-#include "ath.h"
+#include "piece.h"
 #include "stdafx.h"
 
+class King;
+class Piece;
 class Board
 {
 private:

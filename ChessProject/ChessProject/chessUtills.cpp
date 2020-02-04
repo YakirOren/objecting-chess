@@ -1,40 +1,28 @@
 #include "chessUtills.h"
 
-int* chessUtills::parseGuiResponse(std::string guiString)
+void chessUtills::parseGuiResponse(std::string guiString, int* cords)
 {
-	int* response = new int[4];
-	// [src x, srcy, dst x, dst y]
+	// [src x, src y, dst x, dst y]
 
-	response[0] = guiString[0] - 'a';
-	response[1] = guiString[1] - '1';
-	response[2] = guiString[2] - 'a';
-	response[3] = guiString[1] - '1';
-
-	return response;
+	cords[0] = guiString[0] - 'a';
+	cords[1] = guiString[1] - '1';
+	cords[2] = guiString[2] - 'a';
+	cords[3] = guiString[3] - '1';
 }
 
-int chessUtills::sendMsg(Pipe* p, std::string msgToGraphics)
+void chessUtills::sendMsg(Pipe* p, std::string msgToGraphics)
 {
-	// YOUR CODE
-	//strcpy_s(msgToGraphics, "YOUR CODE"); // msgToGraphics should contain the result of the operation
-
-	///******* JUST FOR EREZ DEBUGGING ******/
-	//int r = rand() % 10; // just for debugging......
-	//msgToGraphics[0] = (char)(1 + '0');
-	//msgToGraphics[1] = 0;
-	///******* JUST FOR EREZ DEBUGGING ******/
-
-
-	// return result to graphics		
+	// send result to graphics		
 	p->sendMessageToGraphics((char*)msgToGraphics.c_str());
+}
 
+// function will put response in the param msgFromGraphics and return true if connection ended
+bool chessUtills::getMsg(Pipe* p, std::string* msgFromGraphics)
+{
 	// get message from graphics
-	string msgFromGraphics = p->getMessageFromGraphics();
+	*msgFromGraphics = p->getMessageFromGraphics();
 
-	std::cout << msgFromGraphics << std::endl;
-	
-
-	return msgFromGraphics != "quit" ? 1 : 0;
+	return *msgFromGraphics == "quit" ? true : false;
 }
 
 Pipe* chessUtills::initBoard()

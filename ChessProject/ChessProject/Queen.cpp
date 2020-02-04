@@ -8,17 +8,17 @@ Queen::~Queen()
 {
 }
 
-bool Queen::canMoveTo(Piece*** board, int dstX, int dstY) const
+bool Queen::canMoveTo(Board board, int dstX, int dstY) const
 {
 	return false;
 }
 
-bool Queen::isCheck(Piece*** board) const
+bool Queen::isCheck(Board board) const
 {
 	return false;
 }
 
-std::vector<char>* Queen::isThreatening(Piece*** board) const
+std::vector<char>* Queen::isThreatening(Board board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 	return temp;

@@ -1,4 +1,6 @@
 #pragma once
+class Board;
+#include "Board.h"
 #include "consts.h"
 #include "stdafx.h"
 
@@ -13,9 +15,9 @@ protected:
 
 
 public:
-	virtual bool canMoveTo(Piece*** board, int dstX, int dstY) const;
-	virtual bool isCheck(Piece*** board) const;
-	virtual std::vector<char>* isThreatening(Piece*** board) const;
+	virtual bool canMoveTo(Board board, int dstX, int dstY) const;
+	virtual bool isCheck(Board board) const;
+	virtual std::vector<char>* isThreatening(Board board) const;
 	virtual void draw() const;
 
 

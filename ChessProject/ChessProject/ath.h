@@ -2,8 +2,8 @@
 // misc
 #include "consts.h"
 
+
 // Pieces
-#include "Piece.h"
 #include "King.h"
 #include "Knight.h"
 #include "Bishop.h"

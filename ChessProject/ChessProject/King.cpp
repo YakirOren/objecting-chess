@@ -10,17 +10,17 @@ King::~King()
 {
 }
 
-bool King::canMoveTo(Piece*** board, int dstX, int dstY) const
+bool King::canMoveTo(Board board, int dstX, int dstY) const
 {
 	return false;
 }
 
-bool King::isCheck(Piece*** board) const
+bool King::isCheck(Board board) const
 {
 	return false;
 }
 
-std::vector<char>* King::isThreatening(Piece*** board) const
+std::vector<char>* King::isThreatening(Board board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 	return temp;

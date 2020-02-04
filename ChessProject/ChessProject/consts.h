@@ -15,15 +15,15 @@ enum colors
 // move codes
 enum moveCodes
 {
-	valid = 0,
-	valid_check = 1,
-	invalid_src_is_not_piece = 2,
-	invalid_dst_is_current_player = 3,
-	invalid_will_check_current_player = 4,
-	invalid_index = 5,
-	invalid_piece_move = 6,
-	invalid_dst_is_src = 7,
-	valid_checkmate = 8,
+	valid = '0',
+	valid_check = '1',
+	invalid_src_is_not_piece = '2',
+	invalid_dst_is_current_player = '3',
+	invalid_will_check_current_player = '4',
+	invalid_index = '5',
+	invalid_piece_move = '6',
+	invalid_dst_is_src = '7',
+	valid_checkmate = '8',
 };
 
 enum symbol

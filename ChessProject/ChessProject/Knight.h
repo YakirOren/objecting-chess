@@ -1,6 +1,7 @@
 #pragma once
+#include "Board.h"
 #include "consts.h"
-#include "Piece.h"
+#include "stdafx.h"
 
 class Knight :
 	public Piece
@@ -8,9 +9,9 @@ class Knight :
 public:
 	Knight(int x, int y, int color);
 
-	bool canMoveTo(Piece*** board, int dstX, int dstY);
-	bool isCheck(Piece*** board) const;
-	std::vector<char>* isThreatening(Piece*** board) const;
+	bool canMoveTo(Board board, int dstX, int dstY);
+	bool isCheck(Board board) const;
+	std::vector<char>* isThreatening(Board board) const;
 
 
 };
