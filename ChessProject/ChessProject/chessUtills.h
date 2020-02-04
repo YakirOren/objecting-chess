@@ -2,11 +2,13 @@
 #include "stdafx.h"
 #include "Pipe.h"
 #include "consts.h"
+#include "piece.h"
 
 class chessUtills
 {
 public:
-	static int check();
+	static bool isCheck(Board& board, Piece& pieceToCheck);
+
 	static void parseGuiResponse(std::string guiString, int* cords);
 
 	static void sendMsg(Pipe* p, std::string msgToGraphics);

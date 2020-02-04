@@ -1,5 +1,23 @@
 #include "chessUtills.h"
 
+
+
+bool chessUtills::isCheck(Board& board, Piece& pieceToCheck)
+{
+	bool check = false;
+	std::vector<char>* threats = pieceToCheck.isThreatening(board); // getting a vector of all the pieces that are being threated by the piece   
+	for (int i = 0; i < threats->size(); i++)//looping over all elements in the vector 
+	{
+		if (((*threats)[i] == 'k') || ((*threats)[i] == 'K')) // checking if anyone of them is a king
+		{
+			check = true; // we found that a piece somewhere on the board is threatening on a king in other words, getting check.
+		}
+	}
+	delete[] threats; // freeing the memory (the vector was alloceted with new so it needs to be freed) 
+
+	return check;
+}
+
 void chessUtills::parseGuiResponse(std::string guiString, int* cords)
 {
 	// [src x, src y, dst x, dst y]

@@ -13,7 +13,8 @@ bool Piece::isCheck(Board board) const
 	return false;
 }
 
-std::vector<char>* Piece::isThreatening(Board board) const
+
+std::vector<char>* Piece::isThreatening(Board& board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 	return temp;

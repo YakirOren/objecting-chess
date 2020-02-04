@@ -16,7 +16,8 @@ public:
 
 	// misc
 	void draw() const;
-
+	bool isThereCheckForColor(int color);
+	
 	// getters
 	int getPlayerTurn() const;
 	Piece* operator()(int dstX, int dstY) const;

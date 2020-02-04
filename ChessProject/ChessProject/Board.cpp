@@ -67,16 +67,50 @@ void Board::draw() const
 			else {
 				printf("%c ", (*this->board[x][y]).getSymbol());
 			}
-			
+
 		}
 		std::cout << std::endl;
 	}
+}
+
+/*
+	this function is checking if the pieces in the given color
+	are threatening on the other color in other words, the player has check on the other player
+*/
+bool Board::isThereCheckForColor(int color)
+{
+	bool check = false;
+	for (int x = 0; x < BOARD_SIZE; x++)
+	{
+		for (int y = 0; y < BOARD_SIZE; y++)//looping over all the pieces in the board 
+		{
+			if (this->board[x][y] != nullptr) // checking that the slot we are working on is not empty
+			{
+				if (((*this->board[x][y]).getColor()) == color) // getting only the pieces with the color we want
+				{
+					std::vector<char>* threats = this->board[x][y]->isThreatening(*this); // getting a vector of all the pieces that are being threated by the piece   
+					for (int i = 0; i < threats->size(); i++)//looping over all elements in the vector 
+					{
+						if (((*threats)[i] == 'k') || ((*threats)[i] == 'K')) // checking if anyone of them is a king
+						{
+							check = true; // we found that a piece somewhere on the board is threatening on a king in other words, getting check.
+						}
+					}
+					delete[] threats; // freeing the memory (the vector was alloceted with new so it needs to be freed) 
+				}
+
+			}
+		}
+	}
+
+	return check;
 }
 
 int Board::getPlayerTurn() const
 {
 	return this->playerTurn;
 }
+
 
 Piece* Board::operator()(int dstX, int dstY) const
 {

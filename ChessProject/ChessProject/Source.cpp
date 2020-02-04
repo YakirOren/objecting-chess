@@ -69,6 +69,7 @@ int main()
 
 						TODO put "board.nextTurn();" after return 0 or 1
 						*/
+						retCode[0] = valid;
 					}
 					else
 					{
