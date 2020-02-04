@@ -8,12 +8,12 @@ bool Piece::canMoveTo(Piece*** board, int dstX, int dstY) const
 	return false;
 }
 
-bool Piece::isCheck() const
+bool Piece::isCheck(Piece*** board) const
 {
 	return false;
 }
 
-std::vector<char>* Piece::isThreatening() const
+std::vector<char>* Piece::isThreatening(Piece*** board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 	return temp;

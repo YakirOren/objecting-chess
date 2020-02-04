@@ -14,8 +14,8 @@ protected:
 	
 public:
 	virtual bool canMoveTo(Piece*** board,int dstX, int dstY) const;
-	virtual bool isCheck() const ;
-	virtual std::vector<char>* isThreatening() const;
+	virtual bool isCheck(Piece*** board) const ;
+	virtual std::vector<char>* isThreatening(Piece*** board) const;
 	virtual void draw() const;
 	
 	

@@ -13,6 +13,7 @@
 #include <ctype.h>
 #include <thread>
 #include <vector>
+#include <algorithm>
 
 
 

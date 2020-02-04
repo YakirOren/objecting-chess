@@ -13,12 +13,12 @@ bool Pawn::canMoveTo(Piece*** board, int dstX, int dstY) const
 	return false;
 }
 
-bool Pawn::isCheck() const
+bool Pawn::isCheck(Piece*** board) const
 {
 	return false;
 }
 
-std::vector<char>* Pawn::isThreatening() const
+std::vector<char>* Pawn::isThreatening(Piece*** board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 	return temp;

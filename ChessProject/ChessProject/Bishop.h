@@ -10,8 +10,8 @@ public:
 	~Bishop();
 
 	bool canMoveTo(Piece*** board, int dstX, int dstY) const;
-	bool isCheck() const;
-	std::vector<char>* isThreatening() const;
+	bool isCheck(Piece*** board) const;
+	std::vector<char>* isThreatening(Piece*** board) const;
 	void draw() const;
 
 };
