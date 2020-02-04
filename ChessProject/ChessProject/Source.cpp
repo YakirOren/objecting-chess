@@ -38,10 +38,48 @@ int main()
 	while (response != 0)
 	{
 		boardCords = chessUtills::parseGuiResponse(msgFromGraphics);
-		
-		if (board(boardCords[0], boardCords[1]) != nullptr)
+
+		// check if theres a piece on the src point and its the current player color
+		if (board(boardCords[0], boardCords[1]) != nullptr &&
+			board(boardCords[0], boardCords[1])->getColor() == board.getPlayerTurn())
 		{
-			//TODO check all the codes
+			// check if the dst is the same color as the current player
+			if (board.getPlayerTurn() == board(boardCords[2], boardCords[3])->getColor())
+			{
+				// check if indexes are outside the board
+				if (boardCords[0] >= 0 && boardCords[0] <= BOARD_SIZE || 
+					boardCords[1] >= 0 && boardCords[1] <= BOARD_SIZE || 
+					boardCords[2] >= 0 && boardCords[2] <= BOARD_SIZE || 
+					boardCords[3] >= 0 && boardCords[3] <= BOARD_SIZE)
+				{
+					if (boardCords[0] == boardCords[2] && boardCords[1] == boardCords[3])
+					{
+						/*
+						TODO check all the codes
+						valid = 0,
+						valid_check = 1,
+						invalid_will_check_current_player = 4,
+						invalid_piece_move = 6,
+						valid_checkmate = 8,
+
+						TODO put "board.nextTurn();" after return 0 or 1
+						*/
+					}
+					else
+					{
+						retCode = invalid_dst_is_src;
+					}
+
+				}
+				else
+				{
+					retCode = invalid_index;
+				}
+			}
+			else
+			{
+				retCode = invalid_dst_is_current_player;
+			}
 		}
 		else
 		{
