@@ -8,14 +8,9 @@ Pawn::~Pawn()
 {
 }
 
-bool Pawn::canMoveTo(Board board, int dstX, int dstY) const
+int Pawn::canMoveTo(Board& board, int dstX, int dstY) const
 {
-	return false;
-}
-
-bool Pawn::isCheck(Board board) const
-{
-	return false;
+	return yes_valid;
 }
 
 std::vector<char>* Pawn::isThreatening(Board board) const

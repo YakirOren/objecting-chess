@@ -1,11 +1,22 @@
 #pragma once
 // This file contain some consts that are used alot
 
-// Pieces colors
+// Pieces
 enum colors
 {
 	white = 0,
 	black = 1,
+};
+
+enum symbol
+{
+	king = 'k',
+	queen = 'q',
+	rook = 'r',
+	bishop = 'b',
+	knight = 'n',
+	pawn = 'p',
+	empty = '#',
 };
 
 // BOARD
@@ -24,15 +35,13 @@ enum moveCodes
 	invalid_piece_move = '6',
 	invalid_dst_is_src = '7',
 	valid_checkmate = '8',
+	unknown_error = 'u',
 };
 
-enum symbol
+// move codes for the canMove method
+enum canMoveCodes
 {
-	king = 'k',
-	queen = 'q',
-	rook = 'r',
-	bishop = 'b',
-	knight = 'n',
-	pawn = 'p',
-	empty = '#',
+	yes_valid = 0,
+	no_invalid = 1,
+	no_invalid_will_chess_you = 1,
 };

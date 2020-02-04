@@ -10,7 +10,7 @@ King::~King()
 {
 }
 
-bool King::canMoveTo(Board board, int dstX, int dstY) const
+int King::canMoveTo(Board& board, int dstX, int dstY) const
 {
     /*
     TODO: check if the king is not being threatened in the dst pos
@@ -35,11 +35,6 @@ bool King::canMoveTo(Board board, int dstX, int dstY) const
 
 
     return canMove;
-}
-
-bool King::isCheck(Board board) const
-{
-	return false;
 }
 
 std::vector<char>* King::isThreatening(Board board) const

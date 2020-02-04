@@ -9,8 +9,7 @@ class Knight :
 public:
 	Knight(int x, int y, int color);
 
-	bool canMoveTo(Board board, int dstX, int dstY);
-	bool isCheck(Board board) const;
+	int canMoveTo(Board& board, int dstX, int dstY);
 	std::vector<char>* isThreatening(Board board) const;
 
 

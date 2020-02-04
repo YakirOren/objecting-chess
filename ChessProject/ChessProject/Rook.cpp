@@ -6,56 +6,42 @@ Rook::Rook(int x, int y, int color) : Piece(color, x, y, rook)
 
 }
 
-bool Rook::canMoveTo(Board board, int dstX, int dstY)
+int Rook::canMoveTo(Board& board, int dstX, int dstY)
 {
-	bool canMove = true;
+	//TODO check if the king will be in check after move ad return acordingly
+	int canMove = yes_valid;
 	if ((dstX == this->getX() && dstY != this->getY()) || (dstY == this->getY() && dstX != this->getX())) {
 		for (int i = this->getY() + 1; i <= dstY; i++)
 		{
 			if (board(this->getX(), i) != nullptr)
 			{
-				canMove = false;
+				canMove = no_invalid;
 			}
 		}
 		for (int i = this->getY() - 1; i >= dstY; i--)
 		{
 			if (board(this->getX(), i) != nullptr)
 			{
-				canMove = false;
+				canMove = no_invalid;
 			}
 		}
 		for (int i = this->getX() + 1; i <= dstX; i++)
 		{
 			if (board(i, this->getY()) != nullptr)
 			{
-				canMove = false;
+				canMove = no_invalid;
 			}
 		}
 		for (int i = this->getX() - 1; i >= dstX; i--)
 		{
 			if (board(i, this->getY()) != nullptr)
 			{
-				canMove = false;
+				canMove = no_invalid;
 			}
 		}
 	}
 
 	return canMove;
-}
-
-bool Rook::isCheck(Board board) const
-{
-	bool check = false;
-	std::vector<char>* threats = this->isThreatening(board);
-	for (int i = 0; i < threats->size(); i++)
-	{
-		if (tolower((*threats)[i]) == king)
-		{
-			check = true;
-		}
-	}
-
-	return check;
 }
 
 std::vector<char>* Rook::isThreatening(Board board) const

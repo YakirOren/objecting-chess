@@ -4,14 +4,9 @@ Knight::Knight(int x, int y, int color) : Piece(color, x, y, knight)
 {
 }
 
-bool Knight::canMoveTo(Board board, int dstX, int dstY)
+int Knight::canMoveTo(Board& board, int dstX, int dstY)
 {
-	return false;
-}
-
-bool Knight::isCheck(Board board) const
-{
-	return false;
+	return yes_valid;
 }
 
 std::vector<char>* Knight::isThreatening(Board board) const

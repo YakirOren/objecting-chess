@@ -1,18 +1,9 @@
 #include "piece.h"
 
-/*
-get function for the symbol property
-*/
-bool Piece::canMoveTo(Board board, int dstX, int dstY) const
+int Piece::canMoveTo(Board& board, int dstX, int dstY) const
 {
-	return false;
+	return yes_valid;
 }
-
-bool Piece::isCheck(Board board) const
-{
-	return false;
-}
-
 
 std::vector<char>* Piece::isThreatening(Board& board) const
 {
@@ -35,6 +26,9 @@ Piece& Piece::operator= (Piece& other)
 	return *this;
 }
 
+/*
+get function for the symbol property
+*/
 char Piece::getSymbol() const
 {
 	return this->symbol;

@@ -30,6 +30,7 @@ int main()
 
 	Board board(BOARD_LAYOUT);
 	bool exit = false;
+	int isMovable = 0;
 	string msgFromGraphics = p->getMessageFromGraphics();
 	int* boardCords = new int[4];
 	string retCode = "1";
@@ -38,38 +39,48 @@ int main()
 	while (exit != true)
 	{
 		chessUtills::parseGuiResponse(msgFromGraphics, boardCords);
-
-		// check if theres a piece on the src point and its the current player color
-		cout << boardCords[0];
-		cout << boardCords[1];
-		cout << boardCords[2];
-		cout << boardCords[3];
-		cout << endl;
-		if (board(boardCords[0], boardCords[1]) != nullptr &&
-			board(boardCords[0], boardCords[1])->getColor() == board.getPlayerTurn())
+		// check if indexes are outside the board
+		if (boardCords[0] >= 0 && boardCords[0] <= BOARD_SIZE ||
+			boardCords[1] >= 0 && boardCords[1] <= BOARD_SIZE ||
+			boardCords[2] >= 0 && boardCords[2] <= BOARD_SIZE ||
+			boardCords[3] >= 0 && boardCords[3] <= BOARD_SIZE)
 		{
-			// check if the dst is the same color as the current player
-			if (board.getPlayerTurn() == board(boardCords[2], boardCords[3])->getColor())
+			// check if theres a piece on the src point and its the current player color
+			if (board(boardCords[0], boardCords[1]) != nullptr &&
+				board(boardCords[0], boardCords[1])->getColor() == board.getPlayerTurn())
 			{
-				// check if indexes are outside the board
-				if (boardCords[0] >= 0 && boardCords[0] <= BOARD_SIZE || 
-					boardCords[1] >= 0 && boardCords[1] <= BOARD_SIZE || 
-					boardCords[2] >= 0 && boardCords[2] <= BOARD_SIZE || 
-					boardCords[3] >= 0 && boardCords[3] <= BOARD_SIZE)
+				// check if the dst is the same color as the current player
+				if (board(boardCords[2], boardCords[3]) == nullptr ||
+					board.getPlayerTurn() == board(boardCords[2], boardCords[3])->getColor())
 				{
-					if (boardCords[0] == boardCords[2] && boardCords[1] == boardCords[3])
+
+					if (boardCords[0] != boardCords[2] && boardCords[1] != boardCords[3])
 					{
 						/*
 						TODO check all the codes
-						valid = 0,
 						valid_check = 1,
-						invalid_will_check_current_player = 4,
-						invalid_piece_move = 6,
 						valid_checkmate = 8,
 
 						TODO put "board.nextTurn();" after return 0 or 1
 						*/
-						retCode[0] = valid;
+						isMovable = board(boardCords[0], boardCords[1])->canMoveTo(board, boardCords[2], boardCords[3]);
+						if (isMovable == yes_valid)
+						{
+							retCode[0] = valid;
+							board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3]);
+						}
+						else if (isMovable == no_invalid)
+						{
+							retCode[0] = invalid_piece_move;
+						}
+						else if (isMovable == no_invalid_will_chess_you)
+						{
+							retCode[0] = invalid_will_check_current_player;
+						}
+						else
+						{
+							retCode[0] = unknown_error;
+						}
 					}
 					else
 					{
@@ -79,21 +90,22 @@ int main()
 				}
 				else
 				{
-					retCode[0] = invalid_index;
+					retCode[0] = invalid_dst_is_current_player;
 				}
 			}
 			else
 			{
-				retCode[0] = invalid_dst_is_current_player;
+				retCode[0] = invalid_src_is_not_piece;
 			}
 		}
 		else
 		{
-			retCode[0] = invalid_src_is_not_piece;
+			retCode[0] = invalid_index;
 		}
 
 		chessUtills::sendMsg(p, retCode);
 		exit = chessUtills::getMsg(p, &msgFromGraphics);
+		board.draw();
 	}
 
 	delete[] boardCords;

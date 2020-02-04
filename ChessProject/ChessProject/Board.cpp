@@ -125,9 +125,11 @@ void Board::nextTurn()
 bool Board::updateBoard(int srcX, int srcY, int dstX, int dstY)
 {
 	bool gotUpdated = false;
-	//TODO
-	//this->board[dstX][dstY] = this->board[srcX][srcX];
-	//delete[] this->board[srcX][srcY];
-	//this->board[srcX][srcY] = nullptr;
+	if (this->board[dstX][dstY] != nullptr)
+	{
+		delete[] this->board[dstX][dstY];
+	}
+	this->board[dstX][dstY] = this->board[srcX][srcX];
+	this->board[srcX][srcY] = nullptr;
 	return gotUpdated;
 }
