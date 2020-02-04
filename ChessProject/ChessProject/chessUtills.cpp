@@ -22,10 +22,10 @@ void chessUtills::parseGuiResponse(std::string guiString, int* cords)
 {
 	// [src x, src y, dst x, dst y]
 
-	cords[0] = guiString[0] - 'a';
-	cords[1] = guiString[1] - '1';
-	cords[2] = guiString[2] - 'a';
-	cords[3] = guiString[3] - '1';
+	cords[0] = (guiString[0] - 'a');
+	cords[1] = 7 - (guiString[1] - '1');
+	cords[2] = (guiString[2] - 'a');
+	cords[3] = 7 - (guiString[3] - '1');
 }
 
 void chessUtills::sendMsg(Pipe* p, std::string msgToGraphics)
@@ -65,7 +65,7 @@ Pipe* chessUtills::initBoard()
 		else
 		{
 			closePipe(p);
-		
+
 			return nullptr;
 		}
 	}

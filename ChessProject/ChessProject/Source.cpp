@@ -32,13 +32,18 @@ int main()
 	bool exit = false;
 	int isMovable = 0;
 	string msgFromGraphics = p->getMessageFromGraphics();
-	int* boardCords = new int[4];
+	int* boardCords = new int[4]; // [src x, src y, dst x, dst y]
 	string retCode = "1";
 
 	//game loop
 	while (exit != true)
 	{
 		chessUtills::parseGuiResponse(msgFromGraphics, boardCords);
+		for (int i = 0; i < 4; i++)
+		{
+			cout << boardCords[i];
+		}
+		cout << endl;
 		// check if indexes are outside the board
 		if (boardCords[0] >= 0 && boardCords[0] <= BOARD_SIZE ||
 			boardCords[1] >= 0 && boardCords[1] <= BOARD_SIZE ||
@@ -46,15 +51,15 @@ int main()
 			boardCords[3] >= 0 && boardCords[3] <= BOARD_SIZE)
 		{
 			// check if theres a piece on the src point and its the current player color
-			if (board(boardCords[0], boardCords[1]) != nullptr &&
-				board(boardCords[0], boardCords[1])->getColor() == board.getPlayerTurn())
+			if (board(boardCords[1], boardCords[0]) != nullptr &&
+				board(boardCords[1], boardCords[0])->getColor() == board.getPlayerTurn())
 			{
 				// check if the dst is the same color as the current player
-				if (board(boardCords[2], boardCords[3]) == nullptr ||
-					board.getPlayerTurn() == board(boardCords[2], boardCords[3])->getColor())
+				if (board(boardCords[3], boardCords[2]) == nullptr ||
+					board.getPlayerTurn() != board(boardCords[3], boardCords[2])->getColor())
 				{
-
-					if (boardCords[0] != boardCords[2] && boardCords[1] != boardCords[3])
+					// check is src equals to the dst
+					if (boardCords[0] != boardCords[2] || boardCords[1] != boardCords[3])
 					{
 						/*
 						TODO check all the codes
@@ -63,11 +68,12 @@ int main()
 
 						TODO put "board.nextTurn();" after return 0 or 1
 						*/
-						isMovable = board(boardCords[0], boardCords[1])->canMoveTo(board, boardCords[2], boardCords[3]);
+						isMovable = board(boardCords[1], boardCords[0])->canMoveTo(board, boardCords[3], boardCords[2]);
 						if (isMovable == yes_valid)
 						{
 							retCode[0] = valid;
-							board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3]);
+							board.updateBoard(boardCords[1], boardCords[0], boardCords[3], boardCords[2]);
+							board.nextTurn();
 						}
 						else if (isMovable == no_invalid)
 						{
@@ -104,8 +110,8 @@ int main()
 		}
 
 		chessUtills::sendMsg(p, retCode);
-		exit = chessUtills::getMsg(p, &msgFromGraphics);
 		board.draw();
+		exit = chessUtills::getMsg(p, &msgFromGraphics);
 	}
 
 	delete[] boardCords;

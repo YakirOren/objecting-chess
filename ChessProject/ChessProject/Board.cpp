@@ -14,22 +14,22 @@ Board::Board(std::string startingBoard)
 
 			switch (tolower(curentChar)) {
 			case king:
-				this->board[x][y] = new King(x, y, isupper(curentChar) ? black : white);
+				this->board[x][y] = new King(x, y, islower(curentChar) ? black : white);
 				break;
 			case queen:
-				this->board[x][y] = new Queen(x, y, isupper(curentChar) ? black : white);
+				this->board[x][y] = new Queen(x, y, islower(curentChar) ? black : white);
 				break;
 			case rook:
-				this->board[x][y] = new Rook(x, y, isupper(curentChar) ? black : white);
+				this->board[x][y] = new Rook(x, y, islower(curentChar) ? black : white);
 				break;
 			case bishop:
-				this->board[x][y] = new Bishop(x, y, isupper(curentChar) ? black : white);
+				this->board[x][y] = new Bishop(x, y, islower(curentChar) ? black : white);
 				break;
 			case knight:
-				this->board[x][y] = new Knight(x, y, isupper(curentChar) ? black : white);
+				this->board[x][y] = new Knight(x, y, islower(curentChar) ? black : white);
 				break;
 			case pawn:
-				this->board[x][y] = new Pawn(x, y, isupper(curentChar) ? black : white);
+				this->board[x][y] = new Pawn(x, y, islower(curentChar) ? black : white);
 				break;
 			default:
 				this->board[x][y] = nullptr;
@@ -61,11 +61,11 @@ void Board::draw() const
 	printf("The player turn is: %s \nThe board is:\n", this->playerTurn == white ? "White" : "Black");
 	for (int x = 0; x < BOARD_SIZE; x++) {
 		for (int y = 0; y < BOARD_SIZE; y++) {
-			if (this->board[x][y] == nullptr) {
+			if ((*this)(x, y) == nullptr) {
 				printf("%c ", empty);
 			}
 			else {
-				printf("%c ", (*this->board[x][y]).getSymbol());
+				printf("%c ", ((*this)(x, y)->getSymbol()));
 			}
 
 		}
@@ -124,12 +124,13 @@ void Board::nextTurn()
 
 bool Board::updateBoard(int srcX, int srcY, int dstX, int dstY)
 {
-	bool gotUpdated = false;
+	bool gotUpdated = true;
 	if (this->board[dstX][dstY] != nullptr)
 	{
-		delete[] this->board[dstX][dstY];
+		;
+		//delete[] this->board[dstX][dstY];
 	}
-	this->board[dstX][dstY] = this->board[srcX][srcX];
+	this->board[dstX][dstY] = this->board[srcX][srcY];
 	this->board[srcX][srcY] = nullptr;
 	return gotUpdated;
 }
