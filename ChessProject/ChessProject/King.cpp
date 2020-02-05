@@ -40,6 +40,22 @@ int King::canMoveTo(Board& board, int dstX, int dstY) const
 std::vector<char>* King::isThreatening(Board board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
+
+    for (int i = -1; i < 2; i++)
+    {
+        for (int j = -1; j < 2; j++)
+        {
+            if ((i == 0) && (j == 0))
+            {
+                continue;
+            }
+            else if (board((this->getX() + i),(this->getY() + j)) != nullptr ) {
+                temp->push_back(board((this->getX() + i), (this->getY() + j))->getSymbol());
+            }
+        }
+    }
+
+
 	return temp;
 }
 
