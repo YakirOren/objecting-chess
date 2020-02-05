@@ -30,6 +30,7 @@ int main()
 
 	Board board(BOARD_LAYOUT);
 	bool exit = false;
+	char currentChar = 'a';
 	int isMovable = 0;
 	string msgFromGraphics = p->getMessageFromGraphics();
 	int* boardCords = new int[4]; // [src x, src y, dst x, dst y]
@@ -44,69 +45,59 @@ int main()
 			cout << boardCords[i];
 		}
 		cout << endl;
-		// check if indexes are outside the board
-		if (boardCords[0] >= 0 && boardCords[0] <= BOARD_SIZE ||
-			boardCords[1] >= 0 && boardCords[1] <= BOARD_SIZE ||
-			boardCords[2] >= 0 && boardCords[2] <= BOARD_SIZE ||
-			boardCords[3] >= 0 && boardCords[3] <= BOARD_SIZE)
+
+		if (retCode[0] = chessUtills::isValidCords(board, boardCords[0], boardCords[1], boardCords[2], boardCords[3]) == valid)
 		{
-			// check if theres a piece on the src point and its the current player color
-			if (board(boardCords[1], boardCords[0]) != nullptr &&
-				board(boardCords[1], boardCords[0])->getColor() == board.getPlayerTurn())
+			/*
+			TODO check all the codes
+			valid_check = 1,
+			valid_checkmate = 8,
+
+			TODO put "board.nextTurn();" after return 0 or 1
+			*/
+			currentChar = board(boardCords[0], boardCords[1])->getSymbol();
+			switch (tolower(currentChar)) {
+			case king:
+				isMovable = ((King*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
+				break;
+			case queen:
+				isMovable = ((Queen*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
+				break;
+			case rook:
+				isMovable = ((Rook*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
+				break;
+			case bishop:
+				isMovable = ((Bishop*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
+				break;
+			case knight:
+				isMovable = ((Knight*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
+				break;
+			case pawn:
+				isMovable = ((Pawn*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
+				break;
+			default:
+				isMovable = unknown_error;
+				break;
+			}
+			if (isMovable == yes_valid)
 			{
-				// check if the dst is the same color as the current player
-				if (board(boardCords[3], boardCords[2]) == nullptr ||
-					board.getPlayerTurn() != board(boardCords[3], boardCords[2])->getColor())
-				{
-					// check is src equals to the dst
-					if (boardCords[0] != boardCords[2] || boardCords[1] != boardCords[3])
-					{
-						/*
-						TODO check all the codes
-						valid_check = 1,
-						valid_checkmate = 8,
-
-						TODO put "board.nextTurn();" after return 0 or 1
-						*/
-						isMovable = board(boardCords[1], boardCords[0])->canMoveTo(board, boardCords[3], boardCords[2]);
-						if (isMovable == yes_valid)
-						{
-							retCode[0] = valid;
-							board.updateBoard(boardCords[1], boardCords[0], boardCords[3], boardCords[2]);
-							board.nextTurn();
-						}
-						else if (isMovable == no_invalid)
-						{
-							retCode[0] = invalid_piece_move;
-						}
-						else if (isMovable == no_invalid_will_chess_you)
-						{
-							retCode[0] = invalid_will_check_current_player;
-						}
-						else
-						{
-							retCode[0] = unknown_error;
-						}
-					}
-					else
-					{
-						retCode[0] = invalid_dst_is_src;
-					}
-
-				}
-				else
-				{
-					retCode[0] = invalid_dst_is_current_player;
-				}
+				retCode[0] = valid;
+				board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3]);
+				board.nextTurn();
+			}
+			else if (isMovable == no_invalid)
+			{
+				retCode[0] = invalid_piece_move;
+			}
+			else if (isMovable == no_invalid_will_chess_you)
+			{
+				retCode[0] = invalid_will_check_current_player;
 			}
 			else
 			{
-				retCode[0] = invalid_src_is_not_piece;
+				retCode[0] = unknown_error;
 			}
-		}
-		else
-		{
-			retCode[0] = invalid_index;
+
 		}
 
 		chessUtills::sendMsg(p, retCode);

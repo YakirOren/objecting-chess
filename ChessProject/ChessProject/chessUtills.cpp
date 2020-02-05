@@ -18,14 +18,47 @@ bool chessUtills::isCheck(Board& board, Piece& pieceToCheck)
 	return check;
 }
 
+// check the cords from the gui and return some codes
+int chessUtills::isValidCords(Board& board, int srcX, int srcY, int dstX, int dstY)
+{
+	// check if the cords are outside the board
+	if (srcX >= 0 && srcX <= BOARD_SIZE ||
+		srcY >= 0 && srcY <= BOARD_SIZE ||
+		dstX >= 0 && dstX <= BOARD_SIZE ||
+		dstY >= 0 && dstY <= BOARD_SIZE)
+	{
+		// check if theres a piece on the src point and its the current player color
+		if (board(srcX, srcY) != nullptr &&
+			board(srcX, srcY)->getColor() == board.getPlayerTurn())
+		{
+			// check if the dst is the same color as the current player
+			if (board(dstX, dstY) == nullptr ||
+				board.getPlayerTurn() != board(dstX, dstY)->getColor())
+			{
+				// check is src equals to the dst
+				if (srcX != dstX || srcY != dstY)
+				{
+					return valid;
+
+				}
+				return invalid_dst_is_src;
+
+			}
+			return invalid_dst_is_current_player;
+		}
+		return invalid_src_is_not_piece;
+	}
+	return invalid_index;
+}
+
 void chessUtills::parseGuiResponse(std::string guiString, int* cords)
 {
 	// [src x, src y, dst x, dst y]
 
-	cords[0] = (guiString[0] - 'a');
-	cords[1] = 7 - (guiString[1] - '1');
-	cords[2] = (guiString[2] - 'a');
-	cords[3] = 7 - (guiString[3] - '1');
+	cords[1] = (guiString[0] - 'a');
+	cords[0] = 7 - (guiString[1] - '1');
+	cords[3] = (guiString[2] - 'a');
+	cords[2] = 7 - (guiString[3] - '1');
 }
 
 void chessUtills::sendMsg(Pipe* p, std::string msgToGraphics)
