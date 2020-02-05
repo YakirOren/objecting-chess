@@ -15,9 +15,8 @@ protected:
 
 
 public:
-	virtual int canMoveTo(Board& board, int dstX, int dstY) const;
-	virtual std::vector<char>* isThreatening(Board& board) const;
-	virtual void draw() const;
+	virtual int canMoveTo(Board& board, int dstX, int dstY) const=0;
+	virtual std::vector<char>* isThreatening(Board& board) const=0;
 
 
 	Piece& operator= (Piece& other);

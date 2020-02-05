@@ -8,9 +8,10 @@ class Knight :
 {
 public:
 	Knight(int x, int y, int color);
+	~Knight();
 
-	int canMoveTo(Board& board, int dstX, int dstY);
-	std::vector<char>* isThreatening(Board board) const;
+	int canMoveTo(Board& board, int dstX, int dstY) const;
+	std::vector<char>* isThreatening(Board& board) const;
 
 
 };

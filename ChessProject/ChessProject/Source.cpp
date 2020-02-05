@@ -46,7 +46,7 @@ int main()
 		}
 		cout << endl;
 
-		if (retCode[0] = chessUtills::isValidCords(board, boardCords[0], boardCords[1], boardCords[2], boardCords[3]) == valid)
+		if ((retCode[0] = chessUtills::isValidCords(board, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) == valid)
 		{
 			/*
 			TODO check all the codes

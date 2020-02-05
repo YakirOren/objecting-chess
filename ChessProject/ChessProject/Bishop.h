@@ -11,8 +11,7 @@ public:
 	~Bishop();
 
 	int canMoveTo(Board& board, int dstX, int dstY) const;
-	std::vector<char>* isThreatening(Board board) const;
-	void draw() const;
+	std::vector<char>* isThreatening(Board& board) const;
 
 };
 

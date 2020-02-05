@@ -19,7 +19,7 @@ bool chessUtills::isCheck(Board& board, Piece& pieceToCheck)
 }
 
 // check the cords from the gui and return some codes
-int chessUtills::isValidCords(Board& board, int srcX, int srcY, int dstX, int dstY)
+char chessUtills::isValidCords(Board& board, int srcX, int srcY, int dstX, int dstY)
 {
 	// check if the cords are outside the board
 	if (srcX >= 0 && srcX <= BOARD_SIZE ||
@@ -42,7 +42,6 @@ int chessUtills::isValidCords(Board& board, int srcX, int srcY, int dstX, int ds
 
 				}
 				return invalid_dst_is_src;
-
 			}
 			return invalid_dst_is_current_player;
 		}

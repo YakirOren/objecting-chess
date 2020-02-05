@@ -9,8 +9,8 @@ class Rook :
 public:
 	Rook(int x, int y, int color);
 
-	int canMoveTo(Board& board, int dstX, int dstY);
-	std::vector<char>* isThreatening(Board board) const;
+	int canMoveTo(Board& board, int dstX, int dstY) const;
+	std::vector<char>* isThreatening(Board& board) const;
 	
 
 	~Rook();

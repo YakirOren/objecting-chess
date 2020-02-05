@@ -9,7 +9,7 @@ class chessUtills
 public:
 	static bool isCheck(Board& board, Piece& pieceToCheck);
 
-	static int isValidCords(Board& board, int srcX, int srcY, int dstX, int dstY);
+	static char isValidCords(Board& board, int srcX, int srcY, int dstX, int dstY);
 
 	static void parseGuiResponse(std::string guiString, int* cords);
 

@@ -10,8 +10,7 @@ public:
 	Queen(int x, int y, int color);
 	~Queen();
 
-	int canMoveTo(Board board, int dstX, int dstY) const;
-	std::vector<char>* isThreatening(Board board) const;
-	void draw() const;
+	int canMoveTo(Board& board, int dstX, int dstY) const;
+	std::vector<char>* isThreatening(Board& board) const;
 };
 
