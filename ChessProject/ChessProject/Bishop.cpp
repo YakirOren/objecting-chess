@@ -13,7 +13,7 @@ int Bishop::canMoveTo(Board& board, int dstX, int dstY) const
 	return yes_valid;
 }
 
-std::vector<char>* Bishop::isThreatening(Board& board) const
+std::vector<char>* Bishop::isThreatening(const Board& board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 	return temp;

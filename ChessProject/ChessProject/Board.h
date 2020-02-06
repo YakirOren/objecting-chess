@@ -16,7 +16,6 @@ public:
 
 	// misc
 	void draw() const;
-	bool isThereCheckForColor(int color);
 	
 	// getters
 	int getPlayerTurn() const;

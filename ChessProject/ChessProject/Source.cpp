@@ -18,7 +18,9 @@ using std::string;
 
 int main()
 {
+	
 	//system("..\\..\\chessGraphics.exe");
+	
 	srand(time_t(NULL));
 
 	Pipe* p = chessUtills::initBoard();
@@ -55,30 +57,9 @@ int main()
 
 			TODO put "board.nextTurn();" after return 0 or 1
 			*/
-			currentChar = board(boardCords[0], boardCords[1])->getSymbol();
-			switch (tolower(currentChar)) {
-			case king:
-				isMovable = ((King*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
-				break;
-			case queen:
-				isMovable = ((Queen*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
-				break;
-			case rook:
-				isMovable = ((Rook*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
-				break;
-			case bishop:
-				isMovable = ((Bishop*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
-				break;
-			case knight:
-				isMovable = ((Knight*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
-				break;
-			case pawn:
-				isMovable = ((Pawn*)board(boardCords[0], boardCords[1]))->canMoveTo(board, boardCords[2], boardCords[3]);
-				break;
-			default:
-				isMovable = unknown_error;
-				break;
-			}
+			isMovable = board(boardCords[0], boardCords[1])->canMoveTo(board, boardCords[2], boardCords[3]); 
+
+			
 			if (isMovable == yes_valid)
 			{
 				retCode[0] = valid;

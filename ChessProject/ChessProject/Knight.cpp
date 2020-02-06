@@ -13,7 +13,7 @@ int Knight::canMoveTo(Board& board, int dstX, int dstY) const
 	return yes_valid;
 }
 
-std::vector<char>* Knight::isThreatening(Board& board) const
+std::vector<char>* Knight::isThreatening(const Board& board) const
 {
 	return nullptr;
 }
