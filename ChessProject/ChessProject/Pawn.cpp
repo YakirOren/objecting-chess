@@ -13,7 +13,7 @@ int Pawn::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 	return yes_valid;
 }
 
-std::vector<char>* Pawn::isThreatening(const Board& board) const
+std::vector<char>* Pawn::isThreatening(Board& board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 	return temp;

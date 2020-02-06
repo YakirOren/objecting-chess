@@ -51,7 +51,7 @@ int Rook::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 	return yes_valid;
 }
 
-std::vector<char>* Rook::isThreatening(const Board& board) const
+std::vector<char>* Rook::isThreatening(Board& board) const
 {
 	std::vector<char>* threats = new std::vector<char>;
 	for (int i = this->getY() + 1; i <= BOARD_SIZE; i++)

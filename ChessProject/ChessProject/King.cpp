@@ -55,7 +55,7 @@ int King::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 	return canMove;
 }
 
-std::vector<char>* King::isThreatening(const Board& board) const
+std::vector<char>* King::isThreatening(Board& board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 

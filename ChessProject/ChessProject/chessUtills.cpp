@@ -2,7 +2,7 @@
 
 
 
-bool chessUtills::isCheck(const Board& board, Piece& pieceToCheck)
+bool chessUtills::isCheck(Board& board, Piece& pieceToCheck)
 {
 	bool check = false;
 	std::vector<char>* threats = pieceToCheck.isThreatening(board); // getting a vector of all the pieces that are being threated by the piece   
@@ -117,7 +117,7 @@ void chessUtills::closePipe(Pipe* p)
 	this function is checking if the pieces in the given color
 	are threatening on the other color in other words, the player has check on the other player
 */
-bool chessUtills::isThereCheckForColor(const int& color, const Board& board)
+bool chessUtills::isThereCheckForColor(const int& color, Board& board)
 {
 	bool check = false;
 	for (int x = 0; x < BOARD_SIZE; x++)

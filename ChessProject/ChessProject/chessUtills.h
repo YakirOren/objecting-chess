@@ -7,7 +7,7 @@
 class chessUtills
 {
 public:
-	static bool isCheck(const Board& board, Piece& pieceToCheck);
+	static bool isCheck(Board& board, Piece& pieceToCheck);
 
 	static char isValidCords(const Board& board, const int& srcX, const int& srcY, const int& dstX, const int& dstY);
 
@@ -17,7 +17,7 @@ public:
 	static bool getMsg(Pipe* p, std::string* msgToGraphics);
 	static Pipe* initBoard();
 
-	static bool isThereCheckForColor(const int& color, const Board& board);
+	static bool isThereCheckForColor(const int& color, Board& board);
 	static void closePipe(Pipe* p);
 
 };
