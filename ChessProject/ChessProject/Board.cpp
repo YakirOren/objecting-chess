@@ -103,6 +103,7 @@ bool Board::updateBoard(const int& srcX, const int& srcY, const int& dstX, const
 		//delete[] this->board[dstX][dstY];
 	}
 	this->board[dstX][dstY] = this->board[srcX][srcY];
+	this->board[srcX][srcY]->setPos(dstX, dstY);
 	this->board[srcX][srcY] = nullptr;
 	return gotUpdated;
 }

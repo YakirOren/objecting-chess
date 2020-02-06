@@ -13,7 +13,6 @@ King::~King()
 
 int King::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 {
-	
 	int canMove = no_invalid;
 
 	for (int i = -1; i < 2; i++)
@@ -44,11 +43,11 @@ int King::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 			board.updateBoard(dstX, dstY, ogX, ogY); //moving from the dst back to the og pos 
 
 			board.updateBoard(pieceInDst->getX(), pieceInDst->getY(), dstX, dstY); // moving the orignal piece to its orignal postion
-			
+
 			canMove = no_invalid_will_chess_you;
 
 		}
-		
+
 
 	}
 
