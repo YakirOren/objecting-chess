@@ -8,10 +8,10 @@ class King :
 	public Piece
 {
 public:
-	King(int x, int y, int color);
+	King(const int& x, const int& y, const int& color);
 	~King();
 
-	int canMoveTo(Board& board, int dstX, int dstY) const;
+	int canMoveTo(Board& board, const int& dstX, const int& dstY) const;
 	std::vector<char>* isThreatening(const Board& board) const;
 	
 

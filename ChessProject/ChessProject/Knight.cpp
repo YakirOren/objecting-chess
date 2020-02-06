@@ -1,6 +1,6 @@
 #include "Knight.h"
 
-Knight::Knight(int x, int y, int color) : Piece(color, x, y, knight)
+Knight::Knight(const int& x, const int& y, const int& color) : Piece(color, x, y, knight)
 {
 }
 
@@ -8,7 +8,7 @@ Knight::~Knight()
 {
 }
 
-int Knight::canMoveTo(Board& board, int dstX, int dstY) const
+int Knight::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 {
 	return yes_valid;
 }

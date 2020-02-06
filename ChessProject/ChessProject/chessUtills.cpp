@@ -2,7 +2,7 @@
 
 
 
-bool chessUtills::isCheck(Board& board, Piece& pieceToCheck)
+bool chessUtills::isCheck(const Board& board, Piece& pieceToCheck)
 {
 	bool check = false;
 	std::vector<char>* threats = pieceToCheck.isThreatening(board); // getting a vector of all the pieces that are being threated by the piece   
@@ -19,7 +19,7 @@ bool chessUtills::isCheck(Board& board, Piece& pieceToCheck)
 }
 
 // check the cords from the gui and return some codes
-char chessUtills::isValidCords(Board& board, int srcX, int srcY, int dstX, int dstY)
+char chessUtills::isValidCords(const Board& board, const int& srcX, const int& srcY, const int& dstX, const int& dstY)
 {
 	// check if the cords are outside the board
 	if (srcX >= 0 && srcX <= BOARD_SIZE ||
@@ -50,17 +50,17 @@ char chessUtills::isValidCords(Board& board, int srcX, int srcY, int dstX, int d
 	return invalid_index;
 }
 
-void chessUtills::parseGuiResponse(std::string guiString, int* cords)
+void chessUtills::parseGuiResponse(const std::string& guiString, int* cords)
 {
 	// [src x, src y, dst x, dst y]
 
-	cords[1] = (guiString[0] - 'a');
 	cords[0] = 7 - (guiString[1] - '1');
-	cords[3] = (guiString[2] - 'a');
+	cords[1] = (guiString[0] - 'a');
 	cords[2] = 7 - (guiString[3] - '1');
+	cords[3] = (guiString[2] - 'a');
 }
 
-void chessUtills::sendMsg(Pipe* p, std::string msgToGraphics)
+void chessUtills::sendMsg(Pipe* p, const std::string& msgToGraphics)
 {
 	// send result to graphics		
 	p->sendMessageToGraphics((char*)msgToGraphics.c_str());
@@ -117,7 +117,7 @@ void chessUtills::closePipe(Pipe* p)
 	this function is checking if the pieces in the given color
 	are threatening on the other color in other words, the player has check on the other player
 */
-bool chessUtills::isThereCheckForColor(int color, Board& board)
+bool chessUtills::isThereCheckForColor(const int& color, const Board& board)
 {
 	bool check = false;
 	for (int x = 0; x < BOARD_SIZE; x++)

@@ -7,10 +7,10 @@ class Knight :
 	public Piece
 {
 public:
-	Knight(int x, int y, int color);
+	Knight(const int& x, const int& y, const int& color);
 	~Knight();
 
-	int canMoveTo(Board& board, int dstX, int dstY) const;
+	int canMoveTo(Board& board, const int& dstX, const int& dstY) const;
 	std::vector<char>* isThreatening(const Board& board) const;
 
 

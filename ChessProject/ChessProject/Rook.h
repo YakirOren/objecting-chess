@@ -7,10 +7,10 @@ class Rook :
 	public Piece
 {
 public:
-	Rook(int x, int y, int color);
+	Rook(const int& x, const int& y, const int& color);
 
-	int canMoveTo(Board& board, int dstX, int dstY) const;
-	std::vector<char>* isThreatening(Board& board) const;
+	int canMoveTo(Board& board, const int& dstX, const int& dstY) const;
+	std::vector<char>* isThreatening(const Board& board) const;
 	
 
 	~Rook();

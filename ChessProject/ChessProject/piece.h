@@ -15,7 +15,7 @@ protected:
 
 
 public:
-	virtual int canMoveTo(Board& board, int dstX, int dstY) const=0;
+	virtual int canMoveTo(Board& board, const int& dstX, const int& dstY) const=0;
 	virtual std::vector<char>* isThreatening(const Board& board) const=0;
 
 
@@ -25,11 +25,11 @@ public:
 	int getY() const;
 	int getColor() const;
 
-	void setSymbol(char symbol);
-	void setColor(int color);
-	void setPos(int x, int y);
+	void setSymbol(const char symbol);
+	void setColor(const int color);
+	void setPos(const int x, const int y);
 
-	Piece(int color, int x, int y, char symbol);
+	Piece(const int color, const int x, const int y, const char symbol);
 	Piece();
 	~Piece();
 };

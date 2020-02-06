@@ -46,7 +46,7 @@ int Piece::getY() const
 /*
 set function for this Piece symbol
 */
-void Piece::setSymbol(char symbol)
+void Piece::setSymbol(const char symbol)
 {
 	this->symbol = symbol;
 }
@@ -54,7 +54,7 @@ void Piece::setSymbol(char symbol)
 /*
 set function for the color of this Piece
 */
-void Piece::setColor(int color)
+void Piece::setColor(const int color)
 {
 	this->color = color;
 }
@@ -63,7 +63,7 @@ void Piece::setColor(int color)
 /*
 set function for the x,y cords of this Piece
 */
-void Piece::setPos(int x, int y)
+void Piece::setPos(const int x, const int y)
 {
 	this->x = x;
 	this->y = y;
@@ -72,7 +72,7 @@ void Piece::setPos(int x, int y)
 /*
 the constactor function for the Piece class
 */
-Piece::Piece(int color, int x , int y , char symbol)
+Piece::Piece(const int color, const int x , const int y , const char symbol)
 {
 	//TODO get symbol from Enum
 	this->color = color;

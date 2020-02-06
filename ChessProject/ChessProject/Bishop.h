@@ -7,10 +7,10 @@ class Bishop :
 	public Piece
 {
 public:
-	Bishop(int x, int y, int color);
+	Bishop(const int& x, const int& y, const int& color);
 	~Bishop();
 
-	int canMoveTo(Board& board, int dstX, int dstY) const;
+	int canMoveTo(Board& board, const int& dstX, const int& dstY) const;
 	std::vector<char>* isThreatening(const Board& board) const;
 
 };

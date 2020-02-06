@@ -11,7 +11,7 @@ private:
 	int playerTurn;
 
 public:
-	Board(std::string startingBoard);
+	Board(const std::string& startingBoard);
 	~Board();
 
 	// misc
@@ -19,9 +19,9 @@ public:
 	
 	// getters
 	int getPlayerTurn() const;
-	Piece* operator()(int dstX, int dstY) const;
+	Piece* operator()(const int& dstX, const int& dstY) const;
 
 	// setters
 	void nextTurn();
-	bool updateBoard(int srcX, int srcY, int dstX, int dstY);
+	bool updateBoard(const int& srcX, const int& srcY, const int& dstX, const int& dstY);
 };

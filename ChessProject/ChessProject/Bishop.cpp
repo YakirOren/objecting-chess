@@ -1,6 +1,6 @@
 #include "Bishop.h"
 
-Bishop::Bishop(int x, int y, int color) : Piece(color, x , y, bishop)
+Bishop::Bishop(const int& x, const int& y, const int& color) : Piece(color, x , y, bishop)
 {
 }
 
@@ -8,7 +8,7 @@ Bishop::~Bishop()
 {
 }
 
-int Bishop::canMoveTo(Board& board, int dstX, int dstY) const
+int Bishop::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 {
 	return yes_valid;
 }

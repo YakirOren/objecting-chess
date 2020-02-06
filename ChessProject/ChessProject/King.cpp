@@ -2,7 +2,7 @@
 #include "chessUtills.h"
 
 
-King::King(int x, int y, int color) : Piece(color, x, y, king) {
+King::King(const int& x, const int& y, const int& color) : Piece(color, x, y, king) {
 
 }
 
@@ -11,7 +11,7 @@ King::~King()
 {
 }
 
-int King::canMoveTo(Board& board, int dstX, int dstY) const
+int King::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 {
 	
 	int canMove = no_invalid;
@@ -34,7 +34,7 @@ int King::canMoveTo(Board& board, int dstX, int dstY) const
 	{
 		int ogX = this->getX();
 		int ogY = this->getY();
-		Piece* pieceInDst = board(dstX, dstY); // 
+		Piece* pieceInDst = board(dstX, dstY); //TODO fix this, the linkage after seeing check will not link the original piece in the dst
 
 		board.updateBoard(this->getX(), this->getY(), dstX, dstY); //moving to the dst 
 		// if the king is threathed in the new pos we need to take him back to the orignal pos

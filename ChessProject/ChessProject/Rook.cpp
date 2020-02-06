@@ -1,12 +1,12 @@
 #include "Rook.h"
 
-Rook::Rook(int x, int y, int color) : Piece(color, x, y, rook)
+Rook::Rook(const int& x, const int& y, const int& color) : Piece(color, x, y, rook)
 {
 
 
 }
 
-int Rook::canMoveTo(Board& board, int dstX, int dstY) const
+int Rook::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 {
 	//TODO check if the king will be in check after move ad return acordingly
 	if ((dstX == this->getX() && dstY != this->getY()) || (dstY == this->getY() && dstX != this->getX())) {
@@ -51,7 +51,7 @@ int Rook::canMoveTo(Board& board, int dstX, int dstY) const
 	return yes_valid;
 }
 
-std::vector<char>* Rook::isThreatening(Board& board) const
+std::vector<char>* Rook::isThreatening(const Board& board) const
 {
 	std::vector<char>* threats = new std::vector<char>;
 	for (int i = this->getY() + 1; i <= BOARD_SIZE; i++)
