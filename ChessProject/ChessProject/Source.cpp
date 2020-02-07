@@ -18,14 +18,13 @@ using std::string;
 
 int main()
 {
-	
+
 	//system("..\\..\\chessGraphics.exe");
-	
+
 	srand(time_t(NULL));
 
 	Pipe* p = chessUtills::initBoard();
-	if (p == nullptr)
-	{
+	if (p == nullptr) {
 		system("pause");
 		return 0;
 	}
@@ -42,8 +41,7 @@ int main()
 	while (exit != true)
 	{
 		chessUtills::parseGuiResponse(msgFromGraphics, boardCords);
-		for (int i = 0; i < 4; i++)
-		{
+		for (int i = 0; i < 4; i++) {
 			cout << boardCords[i];
 		}
 		cout << endl;
@@ -57,25 +55,21 @@ int main()
 
 			TODO put "board.nextTurn();" after return 0 or 1
 			*/
-			isMovable = board(boardCords[0], boardCords[1])->canMoveTo(board, boardCords[2], boardCords[3]); 
+			isMovable = board(boardCords[0], boardCords[1])->canMoveTo(board, boardCords[2], boardCords[3]);
 
-			
-			if (isMovable == yes_valid)
-			{
+
+			if (isMovable == yes_valid) {
 				retCode[0] = valid;
 				board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3]);
 				board.nextTurn();
 			}
-			else if (isMovable == no_invalid)
-			{
+			else if (isMovable == no_invalid) {
 				retCode[0] = invalid_piece_move;
 			}
-			else if (isMovable == no_invalid_will_chess_you)
-			{
+			else if (isMovable == no_invalid_will_chess_you) {
 				retCode[0] = invalid_will_check_current_player;
 			}
-			else
-			{
+			else {
 				retCode[0] = unknown_error;
 			}
 
