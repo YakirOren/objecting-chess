@@ -41,7 +41,6 @@ enum moveCodes
 // move codes for the canMove method
 enum canMoveCodes
 {
-	yes_valid = 0,
-	no_invalid = 1,
-	no_invalid_will_chess_you = 1,
+	yes_valid = 1,
+	no_invalid = 0,
 };

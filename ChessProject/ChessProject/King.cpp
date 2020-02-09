@@ -13,66 +13,35 @@ King::~King()
 
 int King::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 {
-	int canMove = no_invalid;
-
-	for (int i = -1; i < 2; i++)
-	{
-		for (int j = -1; j < 2; j++)
-		{
-			if ((i == 0) && (j == 0))
-			{
+	// loop over 3x3 around the king
+	for (int x = -1; x < 2; x++) {
+		for (int y = -1; y < 2; y++) {
+			if ((x == 0) && (y == 0)) { // if its not the king
 				continue;
 			}
-			else if (((this->getX() + i) == dstX) && ((this->getY() + j) == dstY)) {
-				canMove = yes_valid;
+			else if (((this->getX() + x) == dstX) && ((this->getY() + y) == dstY) && // if its the position were looking for
+				(board(dstX, dstY) == nullptr|| board(dstX, dstY)->getColor() != board(this->getX(), this->getY())->getColor())) { // and its not the same color
+				return yes_valid;
 			}
 		}
 	}
-
-	if (canMove == yes_valid)
-	{
-		int ogX = this->getX();
-		int ogY = this->getY();
-		Piece* pieceInDst = board(dstX, dstY); //TODO fix this, the linkage after seeing check will not link the original piece in the dst
-
-		board.updateBoard(this->getX(), this->getY(), dstX, dstY); //moving to the dst 
-		// if the king is threathed in the new pos we need to take him back to the orignal pos
-		bool isThreat = chessUtills::isThereCheckForColor(this->getColor(), board);// checking if the king is being threatend in the new pos
-		if (isThreat)
-		{
-			board.updateBoard(dstX, dstY, ogX, ogY); //moving from the dst back to the og pos 
-
-			board.updateBoard(pieceInDst->getX(), pieceInDst->getY(), dstX, dstY); // moving the orignal piece to its orignal postion
-
-			canMove = no_invalid_will_chess_you;
-
-		}
-
-
-	}
-
-
-	return canMove;
+	return no_invalid;
 }
 
 std::vector<char>* King::isThreatening(Board& board) const
 {
 	std::vector<char>* temp = new std::vector<char>;
 
-	for (int i = -1; i < 2; i++)
-	{
-		for (int j = -1; j < 2; j++)
-		{
-			if ((i == 0) && (j == 0))
-			{
-				continue;
-			}
-			else if (board((this->getX() + i), (this->getY() + j)) != nullptr) {
-				temp->push_back(board((this->getX() + i), (this->getY() + j))->getSymbol());
+	// loop over 3x3 around the king
+	for (int x = -1; x < 2; x++) {
+		for (int y = -1; y < 2; y++) {
+			if (this->getX() + x >= 0 && this->getX() + x < BOARD_SIZE && this->getY() + y >= 0 && this->getY() + y < BOARD_SIZE) { // if its on the board
+				if (canMoveTo(board, this->getX() + x, this->getY() + y) && board(this->getX() + x, this->getY() + y)){
+					temp->push_back(board((this->getX() + x), (this->getY() + y))->getSymbol());
+				}
 			}
 		}
 	}
-
 
 	return temp;
 }

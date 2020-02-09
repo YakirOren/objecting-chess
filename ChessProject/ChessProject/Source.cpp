@@ -41,6 +41,7 @@ int main()
 	while (exit != true)
 	{
 		chessUtills::parseGuiResponse(msgFromGraphics, boardCords);
+		cout << "Translated msg from GUI: ";
 		for (int i = 0; i < 4; i++) {
 			cout << boardCords[i];
 		}
@@ -49,25 +50,25 @@ int main()
 		if ((retCode[0] = chessUtills::isValidCords(board, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) == valid)
 		{
 			/*
-			TODO check all the codes
-			valid_check = 1,
+			TODO bonus?
 			valid_checkmate = 8,
-
-			TODO put "board.nextTurn();" after return 0 or 1
 			*/
 			isMovable = board(boardCords[0], boardCords[1])->canMoveTo(board, boardCords[2], boardCords[3]);
 
-
+			// if canMove returned ok
 			if (isMovable == yes_valid) {
-				retCode[0] = valid;
-				board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3]);
-				board.nextTurn();
+				// if it wont check the king next turn
+				if (!chessUtills::willCheckNextTurn(board, board.getPlayerTurn() ? white : black, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) {
+					retCode[0] = valid;
+					board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3]);
+					board.nextTurn();
+				}
+				else {
+					retCode[0] = invalid_will_check_current_player;
+				}
 			}
 			else if (isMovable == no_invalid) {
 				retCode[0] = invalid_piece_move;
-			}
-			else if (isMovable == no_invalid_will_chess_you) {
-				retCode[0] = invalid_will_check_current_player;
 			}
 			else {
 				retCode[0] = unknown_error;
