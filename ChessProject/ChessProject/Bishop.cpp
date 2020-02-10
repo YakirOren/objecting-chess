@@ -94,13 +94,11 @@ std::vector<char>* Bishop::isThreatening(Board& board)
 		if (minus_y >= 0 && minus_y < BOARD_SIZE) {
 			if (plus_x >= 0 && plus_x < BOARD_SIZE) {
 				if (canMoveTo(board, this->getX() + i, this->getY() - i) && board(plus_x, minus_y)) { // move to +x -y
-					printf("DEBUG[bishop] isthreat -> %d, %d has %c\n", plus_x, minus_y, board(plus_x, minus_y)->getSymbol());
 					threats->push_back(board(plus_x, minus_y)->getSymbol());
 				}
 			}
 			if (minus_x >= 0 && minus_x < BOARD_SIZE) {
 				if (canMoveTo(board, this->getX() - i, this->getY() - i) && board(minus_x, minus_y)) { // move to -x -y
-					printf("DEBUG[bishop] isthreat -> %d, %d has %c\n", minus_x, minus_y, board(minus_x, minus_y)->getSymbol());
 					threats->push_back(board(minus_x, minus_y)->getSymbol());
 				}
 			}
@@ -108,13 +106,11 @@ std::vector<char>* Bishop::isThreatening(Board& board)
 		if (plus_y >= 0 && plus_y < BOARD_SIZE) {
 			if (plus_x >= 0 && plus_x < BOARD_SIZE) {
 				if (canMoveTo(board, this->getX() + i, this->getY() + i) && board(plus_x, plus_y)) { // move to +x +y
-					printf("DEBUG[bishop] isthreat -> %d, %d has %c\n", plus_x, plus_y, board(plus_x, plus_y)->getSymbol());
 					threats->push_back(board(plus_x, plus_y)->getSymbol());
 				}
 			}
 			if (minus_x >= 0 && minus_x < BOARD_SIZE) {
 				if (canMoveTo(board, this->getX() - i, this->getY() + i) && board(minus_x, plus_y)) { // move to -x +y
-					printf("DEBUG[bishop] isthreat -> %d, %d has %c\n", minus_x, plus_y, board(minus_x, plus_y)->getSymbol());
 					threats->push_back(board(minus_x, plus_y)->getSymbol());
 				}
 			}
