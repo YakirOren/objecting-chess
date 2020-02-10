@@ -107,3 +107,9 @@ bool Board::updateBoard(const int& srcX, const int& srcY, const int& dstX, const
 	this->board[srcX][srcY] = nullptr;
 	return gotUpdated;
 }
+
+void Board::setPiece(Piece* piece, const int& dstX, const int& dstY)
+{
+	this->board[dstX][dstY] = piece;
+}
+

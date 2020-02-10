@@ -17,7 +17,8 @@ public:
 	static bool getMsg(Pipe* p, std::string* msgToGraphics);
 	static Pipe* initBoard();
 
-	static bool isThereCheckForColor(const int& color, Board& board);
+	static bool isThereCheckForColor(Board& board, const int& color);
+	static bool willCheckNextTurn(Board& board, const int& color, const int& srcX, const int& srcY, const int& dstX, const int& dstY);
 	static void closePipe(Pipe* p);
 
 };

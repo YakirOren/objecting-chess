@@ -46,12 +46,12 @@ std::vector<char>* Rook::isThreatening(Board& board)
 {
 	std::vector<char>* threats = new std::vector<char>;
 	for (int y = 0; y < BOARD_SIZE; y++) { // look over the collum the rook is on
-		if (this->canMoveTo(board, this->getX(), y) && board(this->getX(), y)) { // check if it can move to there and add to threats the piece there
+		if (this->canMoveTo(board, this->getX(), y) == yes_valid && board(this->getX(), y)) { // check if it can move to there and add to threats the piece there
 			threats->push_back(board(this->getX(), y)->getSymbol());
 		}
 	}
 	for (int x = 0; x < BOARD_SIZE; x++) { // look over the row the rook is on
-		if (this->canMoveTo(board, x, this->getY() && board(x, this->getY()))) { // check if it can move to there and add to threats the piece there
+		if (this->canMoveTo(board, x, this->getY()) == yes_valid && board(x, this->getY())) { // check if it can move to there and add to threats the piece there
 			threats->push_back(board(x, this->getY())->getSymbol());
 		}
 	}

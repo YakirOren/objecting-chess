@@ -117,32 +117,44 @@ void chessUtills::closePipe(Pipe* p)
 	this function is checking if the pieces in the given color
 	are threatening on the other color in other words, the player has check on the other player
 */
-bool chessUtills::isThereCheckForColor(const int& color, Board& board)
+bool chessUtills::isThereCheckForColor(Board& board, const int& color)
 {
 	bool check = false;
-	for (int x = 0; x < BOARD_SIZE; x++)
-	{
-		for (int y = 0; y < BOARD_SIZE; y++)//looping over all the pieces in the board 
-		{
-			if (board(x,y) != nullptr) // checking that the slot we are working on is not empty
-			{
-				if (board(x, y)->getColor() == color) // getting only the pieces with the color we want
-				{
+	for (int x = 0; x < BOARD_SIZE; x++) {
+		for (int y = 0; y < BOARD_SIZE; y++) { //looping over all the pieces in the board 
+			if (board(x, y) != nullptr) { // checking that the slot we are working on is not empty
+				if (board(x, y)->getColor() == color) { // getting only the pieces with the color we want
 					std::vector<char>* threats = board(x, y)->isThreatening(board); // getting a vector of all the pieces that are being threated by the piece   
-					for (int i = 0; i < threats->size(); i++)//looping over all elements in the vector 
-					{
-						if (((*threats)[i] == 'k') || ((*threats)[i] == 'K')) // checking if anyone of them is a king
-						{
-							check = true; // we found that a piece somewhere on the board is threatening on a king in other words, getting check.
+					if (threats) { // make sure its not nullptr
+						for (int i = 0; i < threats->size(); i++) { //looping over all elements in the vector 
+							printf("DEBUG[chessUtills] isThereCheckForColor -> %d, %d got %c\n", x, y, (*threats)[i]);
+							if (((*threats)[i] == 'k') || ((*threats)[i] == 'K')) { // checking if anyone of them is a king
+								printf("DEBUG[chessUtills] check in isThereCheckForColor reeeeeeeeeeeeeeee \n");
+								check = true; // we found that a piece somewhere on the board is threatening on a king in other words, getting check.
+								// break the loops
+								x = BOARD_SIZE;
+								y = BOARD_SIZE;
+								break;
+							}
 						}
+						delete threats; // freeing the memory (the vector was alloceted with new so it needs to be freed) 
 					}
-					delete[] threats; // freeing the memory (the vector was alloceted with new so it needs to be freed) 
 				}
 
 			}
 		}
 	}
 
+	return check;
+}
+
+bool chessUtills::willCheckNextTurn(Board& board, const int& color, const int& srcX, const int& srcY, const int& dstX, const int& dstY)
+{
+	Piece* tmepPiece = board(dstX, dstY); // keeps aside dst piece
+	board.updateBoard(srcX, srcY, dstX, dstY); // move the src piece to dst
+	bool check = isThereCheckForColor(board, color); // check if its check now
+	board.updateBoard(dstX, dstY, srcX, srcY); // move back the dst piece to src
+	board.setPiece(tmepPiece, dstX, dstY); // move back the src the piece saved aside
 	return check;
 }
 
