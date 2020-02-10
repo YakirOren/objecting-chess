@@ -86,19 +86,19 @@ std::vector<char>* Pawn::isThreatening(Board& board)
 	int plus_x = this->getX() + 1;
 	int plus_y = this->getY() + 1;
 	int minus_x = this->getX() - 1;
-	int minus_y = this->getY() - 1;
+	int minus_y = this->getY() - 1; 
 
 	if (this->getColor() == colors::black)
 	{
 
-		if (plus_x >= 0 && plus_x <= BOARD_SIZE)
+		if (plus_x >= 0 && plus_x < BOARD_SIZE)
 		{
-			if (minus_y >= 0 && minus_y <= BOARD_SIZE && board(plus_x, minus_y) != nullptr)
+			if (minus_y >= 0 && minus_y < BOARD_SIZE && board(plus_x, minus_y) != nullptr)
 			{
 				threats->push_back(board(plus_x, minus_y)->getSymbol());
 			}
 
-			if (plus_y >= 0 && plus_y <= BOARD_SIZE && board(plus_x, plus_y) != nullptr)
+			if (plus_y >= 0 && plus_y < BOARD_SIZE && board(plus_x, plus_y) != nullptr)
 			{
 				threats->push_back(board(plus_x, plus_y)->getSymbol());
 			}
@@ -109,15 +109,15 @@ std::vector<char>* Pawn::isThreatening(Board& board)
 	if (this->getColor() == colors::white)
 	{
 
-		if (minus_x >= 0 && minus_x <= BOARD_SIZE)
+		if (minus_x >= 0 && minus_x < BOARD_SIZE)
 		{
 
-			if (minus_y >= 0 && minus_y <= BOARD_SIZE && board(minus_x, minus_y) != nullptr)
+			if (minus_y >= 0 && minus_y < BOARD_SIZE && board(minus_x, minus_y) != nullptr)
 			{
 				threats->push_back(board(minus_x, minus_y)->getSymbol());
 			}
 
-			if (plus_y >= 0 && plus_y <= BOARD_SIZE && board(minus_x, plus_y) != nullptr)
+			if (plus_y >= 0 && plus_y < BOARD_SIZE && board(minus_x, plus_y) != nullptr)
 			{
 				threats->push_back(board(minus_x, plus_y)->getSymbol());
 			}
