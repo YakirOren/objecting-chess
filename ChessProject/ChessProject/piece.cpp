@@ -79,7 +79,7 @@ Piece::Piece(const int color, const int x , const int y , const char symbol)
 
 	this->x = x;
 	this->y = y;
-	this->symbol = this->color == white ? tolower(symbol) : toupper(symbol);
+	this->symbol = this->color == colors::white ? tolower(symbol) : toupper(symbol);
 }
 
 

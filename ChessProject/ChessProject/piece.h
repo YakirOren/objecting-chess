@@ -8,7 +8,7 @@ class Board;
 class Piece
 {
 protected:
-	int color; //0 white 1 black
+	int color; //0 colors::white 1 colors::black
 	int x;
 	int y;
 	char symbol;

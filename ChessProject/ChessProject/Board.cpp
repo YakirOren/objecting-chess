@@ -14,22 +14,22 @@ Board::Board(const std::string& startingBoard)
 
 			switch (tolower(curentChar)) {
 			case king:
-				this->board[x][y] = new King(x, y, islower(curentChar) ? black : white);
+				this->board[x][y] = new King(x, y, islower(curentChar) ? colors::black : colors::white);
 				break;
 			case queen:
-				this->board[x][y] = new Queen(x, y, islower(curentChar) ? black : white);
+				this->board[x][y] = new Queen(x, y, islower(curentChar) ? colors::black : colors::white);
 				break;
 			case rook:
-				this->board[x][y] = new Rook(x, y, islower(curentChar) ? black : white);
+				this->board[x][y] = new Rook(x, y, islower(curentChar) ? colors::black : colors::white);
 				break;
 			case bishop:
-				this->board[x][y] = new Bishop(x, y, islower(curentChar) ? black : white);
+				this->board[x][y] = new Bishop(x, y, islower(curentChar) ? colors::black : colors::white);
 				break;
 			case knight:
-				this->board[x][y] = new Knight(x, y, islower(curentChar) ? black : white);
+				this->board[x][y] = new Knight(x, y, islower(curentChar) ? colors::black : colors::white);
 				break;
 			case pawn:
-				this->board[x][y] = new Pawn(x, y, islower(curentChar) ? black : white);
+				this->board[x][y] = new Pawn(x, y, islower(curentChar) ? colors::black : colors::white);
 				break;
 			default:
 				this->board[x][y] = nullptr;
@@ -58,7 +58,7 @@ Board::~Board()
 
 void Board::draw() const
 {
-	printf("The player turn is: %s \nThe board is:\n", this->playerTurn == white ? "White" : "Black");
+	printf("The player turn is: %s \nThe board is:\n", this->playerTurn == colors::white ? "white" : "black");
 	for (int x = 0; x < BOARD_SIZE; x++) {
 		for (int y = 0; y < BOARD_SIZE; y++) {
 			if ((*this)(x, y) == nullptr) {
@@ -71,6 +71,20 @@ void Board::draw() const
 		}
 		std::cout << std::endl;
 	}
+
+	printf("DEBUG[Board] ");
+	for (int x = 0; x < BOARD_SIZE; x++) {
+		for (int y = 0; y < BOARD_SIZE; y++) {
+			if ((*this)(x, y) == nullptr) {
+				printf("%c", empty);
+			}
+			else {
+				printf("%c", ((*this)(x, y)->getSymbol()));
+			}
+
+		}
+	}
+	std::cout << this->playerTurn << std::endl;
 }
 
 

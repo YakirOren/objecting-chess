@@ -58,7 +58,7 @@ int main()
 			// if canMove returned ok
 			if (isMovable == yes_valid) {
 				// if it wont check the king next turn
-				if (!chessUtills::willCheckNextTurn(board, board.getPlayerTurn() ? white : black, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) {
+				if (!chessUtills::willCheckNextTurn(board, board.getPlayerTurn() ? colors::white : colors::black, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) {
 					retCode[0] = valid;
 					board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3]);
 					board.nextTurn();
