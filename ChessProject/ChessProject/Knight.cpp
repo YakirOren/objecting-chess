@@ -23,7 +23,7 @@ std::vector<char>* Knight::isThreatening(Board& board)
 	std::vector<char>* threats = new std::vector<char>;
 	for (int x = this->getX() - 2; x <= this->getX() + 2; x++) { // look over the 5x5 area around the knight
 		for (int y = this->getY() - 2; y <= this->getY() + 2; y++) {
-			if (x >= 0 && x <= 7 && y >= 0 && y <= 7 && canMoveTo(board, x, y) && board(x, y)) { // check if it can move to there and add a threat if yes
+			if (x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE && canMoveTo(board, x, y) && board(x, y)) { // check if it can move to there and add a threat if yes
 				threats->push_back(board(x, y)->getSymbol());
 			}
 		}

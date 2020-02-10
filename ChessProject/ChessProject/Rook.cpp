@@ -8,7 +8,6 @@ Rook::Rook(const int& x, const int& y, const int& color) : Piece(color, x, y, ro
 
 int Rook::canMoveTo(Board& board, const int& dstX, const int& dstY)
 {
-	//TODO check if the king will be in check after move ad return acordingly
 	if ((dstX == this->getX() && dstY != this->getY()) || (dstY == this->getY() && dstX != this->getX())) { // check if the dst is in the line with the rook
 		for (int i = this->getY() + 1; i < dstY; i++) { // try to see if he goes up
 			if (board(this->getX(), i) != nullptr) {
