@@ -22,9 +22,9 @@ bool chessUtills::isCheck(Board& board, Piece& pieceToCheck)
 char chessUtills::isValidCords(const Board& board, const int& srcX, const int& srcY, const int& dstX, const int& dstY)
 {
 	// check if the cords are outside the board
-	if (srcX >= 0 && srcX <= BOARD_SIZE ||
-		srcY >= 0 && srcY <= BOARD_SIZE ||
-		dstX >= 0 && dstX <= BOARD_SIZE ||
+	if (srcX >= 0 && srcX <= BOARD_SIZE &&
+		srcY >= 0 && srcY <= BOARD_SIZE &&
+		dstX >= 0 && dstX <= BOARD_SIZE &&
 		dstY >= 0 && dstY <= BOARD_SIZE)
 	{
 		// check if theres a piece on the src point and its the current player color
@@ -67,12 +67,11 @@ void chessUtills::sendMsg(Pipe* p, const std::string& msgToGraphics)
 }
 
 // function will put response in the param msgFromGraphics and return true if connection ended
-bool chessUtills::getMsg(Pipe* p, std::string* msgFromGraphics)
+void chessUtills::getMsg(Pipe* p, std::string* msgFromGraphics)
 {
 	// get message from graphics
 	*msgFromGraphics = p->getMessageFromGraphics();
 
-	return *msgFromGraphics == "quit" ? true : false;
 }
 
 Pipe* chessUtills::initBoard()

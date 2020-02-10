@@ -14,7 +14,7 @@ public:
 	static void parseGuiResponse(const std::string& guiString, int* cords);
 
 	static void sendMsg(Pipe* p, const std::string& msgToGraphics);
-	static bool getMsg(Pipe* p, std::string* msgToGraphics);
+	static void getMsg(Pipe* p, std::string* msgToGraphics);
 	static Pipe* initBoard();
 
 	static bool isThereCheckForColor(Board& board, const int& color);

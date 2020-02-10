@@ -48,12 +48,12 @@ Board::~Board()
 		for (int y = 0; y < BOARD_SIZE; y++) {
 			if (&this->board[x][y] != nullptr)
 			{
-				delete[] this->board[x][y];
+				delete this->board[x][y];
 			}
 		}
-		delete[] this->board[x];
+		//delete this->board[x];
 	}
-	delete[] this->board;
+	//delete this->board;
 }
 
 void Board::draw() const

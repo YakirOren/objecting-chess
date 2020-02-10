@@ -38,7 +38,7 @@ int main()
 	string retCode = "1";
 
 	//game loop
-	while (exit != true)
+	while (msgFromGraphics != "quit")
 	{
 		chessUtills::parseGuiResponse(msgFromGraphics, boardCords);
 		cout << "Translated msg from GUI: ";
@@ -83,10 +83,12 @@ int main()
 
 		chessUtills::sendMsg(p, retCode);
 		board.draw();
-		exit = chessUtills::getMsg(p, &msgFromGraphics);
+		chessUtills::getMsg(p, &msgFromGraphics);
 	}
-
-	delete[] boardCords;
-	system("pause");
+	
+	p->close();
+	//delete &board;
+	//delete[] boardCords;
+	//system("pause");
 	return 0;
 }
