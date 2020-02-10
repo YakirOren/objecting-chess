@@ -8,7 +8,7 @@ Bishop::~Bishop()
 {
 }
 
-int Bishop::canMoveTo(Board& board, const int& dstX, const int& dstY) const
+int Bishop::canMoveTo(Board& board, const int& dstX, const int& dstY)
 {
 
 	//
@@ -78,7 +78,7 @@ int Bishop::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 
 }
 
-std::vector<char>* Bishop::isThreatening(Board& board) const
+std::vector<char>* Bishop::isThreatening(Board& board)
 {
 	std::vector<char>* threats = new std::vector<char>;
 	

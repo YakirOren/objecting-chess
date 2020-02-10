@@ -8,7 +8,7 @@ Knight::~Knight()
 {
 }
 
-int Knight::canMoveTo(Board& board, const int& dstX, const int& dstY) const
+int Knight::canMoveTo(Board& board, const int& dstX, const int& dstY)
 {
 	if ((abs(dstY - this->getY()) == 2 && abs(dstX - this->getX()) == 1 ||  // if it goes up or down
 		abs(dstX - this->getX()) == 2 && abs(dstY - this->getY()) == 1) && // if it goes left or right
@@ -18,7 +18,7 @@ int Knight::canMoveTo(Board& board, const int& dstX, const int& dstY) const
 	return no_invalid;
 }
 
-std::vector<char>* Knight::isThreatening(Board& board) const
+std::vector<char>* Knight::isThreatening(Board& board)
 {
 	std::vector<char>* threats = new std::vector<char>;
 	for (int x = this->getX() - 2; x <= this->getX() + 2; x++) { // look over the 5x5 area around the knight
