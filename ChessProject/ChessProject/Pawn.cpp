@@ -22,7 +22,7 @@ int Pawn::canMoveTo(Board& board, const int& dstX, const int& dstY)
 	{
 		if (dstY == this->getY())
 		{
-			if ((dstX == this->getX() - 2) && moveTwo && this->getColor() == colors::white)
+			if ((dstX == this->getX() - 2) && board(minus_x, dstY) == nullptr && moveTwo && this->getColor() == colors::white)
 			{
 				this->moveTwo = false;
 				return yes_valid;
@@ -32,7 +32,7 @@ int Pawn::canMoveTo(Board& board, const int& dstX, const int& dstY)
 				this->moveTwo = false;
 				return yes_valid;
 			}
-			if ((dstX == this->getX() + 2) && moveTwo && this->getColor() == colors::black)
+			if ((dstX == this->getX() + 2) && board(plus_x, dstY) == nullptr && moveTwo && this->getColor() == colors::black)
 			{
 				this->moveTwo = false;
 				return yes_valid;

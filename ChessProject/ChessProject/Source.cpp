@@ -21,7 +21,7 @@ int main()
 		return 0;
 	}
 
-	Board board(BOARD_LAYOUT);
+	Board* board = new Board(BOARD_LAYOUT);
 	bool exit = false;
 	char currentChar = 'a';
 	int isMovable = 0;
@@ -39,22 +39,22 @@ int main()
 		}
 		cout << endl;
 
-		if ((retCode[0] = chessUtills::isValidCords(board, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) == valid)
+		if ((retCode[0] = chessUtills::isValidCords(*board, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) == valid)
 		{
-			isMovable = board(boardCords[0], boardCords[1])->canMoveTo(board, boardCords[2], boardCords[3]);
+			isMovable = (*board)(boardCords[0], boardCords[1])->canMoveTo(*board, boardCords[2], boardCords[3]);
 
 			// if canMove returned ok
 			if (isMovable == yes_valid) {
 				// if it wont check the king next turn
-				if (!chessUtills::willCheckNextTurn(board, board.getPlayerTurn() ? colors::white : colors::black, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) {
-					board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3], true);
-					if (chessUtills::isThereCheckForColor(board, board.getPlayerTurn())) {
+				if (!chessUtills::willCheckNextTurn(*board, board->getPlayerTurn() ? colors::white : colors::black, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) {
+					board->updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3], true);
+					if (chessUtills::isThereCheckForColor(*board, board->getPlayerTurn())) {
 						retCode[0] = valid_check;
 					}
 					else {
 						retCode[0] = valid;
 					}
-					board.nextTurn();
+					board->nextTurn();
 				}
 				else {
 					retCode[0] = invalid_will_check_current_player;
@@ -70,12 +70,12 @@ int main()
 		}
 
 		chessUtills::sendMsg(p, retCode);
-		board.draw();
+		board->draw();
 		chessUtills::getMsg(p, &msgFromGraphics);
 	}
 
 	p->close();
-	delete& board;
+	delete board;
 	delete[] boardCords;
 	return 0;
 }
