@@ -49,7 +49,12 @@ int main()
 				if (!chessUtills::willCheckNextTurn(*board, board->getPlayerTurn() ? colors::white : colors::black, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) {
 					board->updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3], true);
 					if (chessUtills::isThereCheckForColor(*board, board->getPlayerTurn())) {
-						retCode[0] = valid_check;
+						if (chessUtills::isCheckMate(*board, board->getPlayerTurn())) {
+							retCode[0] = valid_checkmate;
+						}
+						else {
+							retCode[0] = valid_check;
+						}
 					}
 					else {
 						retCode[0] = valid;

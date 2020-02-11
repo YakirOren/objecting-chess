@@ -19,6 +19,7 @@ public:
 
 	static bool isThereCheckForColor(Board& board, const int& color);
 	static bool willCheckNextTurn(Board& board, const int& color, const int& srcX, const int& srcY, const int& dstX, const int& dstY);
+	static bool isCheckMate(Board& board, const int& color);
 	static void closePipe(Pipe* p);
 
 };

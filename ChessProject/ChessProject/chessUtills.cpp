@@ -155,4 +155,25 @@ bool chessUtills::willCheckNextTurn(Board& board, const int& color, const int& s
 	return check;
 }
 
+bool chessUtills::isCheckMate(Board& board, const int& color)
+{
+	bool willCheckMate = true;
+	for (int srcX = 0; srcX < BOARD_SIZE; srcX++) {
+		for (int srcY = 0; srcY < BOARD_SIZE; srcY++) {
+			for (int dstX = 0; dstX < BOARD_SIZE; dstX++) {
+				for (int dstY = 0; dstY < BOARD_SIZE; dstY++) {
+					if (board(srcX, srcY)) {
+						if (board(srcX, srcY)->getColor() != color && board(srcX, srcY)->canMoveTo(board, dstX, dstY) && !willCheckNextTurn(board, color, srcX, srcY, dstX, dstY)) {
+							printf("lol no checkmate for u %d, %d -> %d, %d\n", srcX, srcY, dstX, dstY);
+							willCheckMate = false;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return willCheckMate;
+}
+
 
