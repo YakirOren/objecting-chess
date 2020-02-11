@@ -23,6 +23,6 @@ public:
 
 	// setters
 	void nextTurn();
-	bool updateBoard(const int& srcX, const int& srcY, const int& dstX, const int& dstY);
+	bool updateBoard(const int& srcX, const int& srcY, const int& dstX, const int& dstY, const bool& deleteTheThing);
 	void setPiece(Piece* piece, const int& dstX, const int& dstY);
 };

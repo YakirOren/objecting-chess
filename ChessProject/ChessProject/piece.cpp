@@ -74,7 +74,6 @@ the constactor function for the Piece class
 */
 Piece::Piece(const int color, const int x , const int y , const char symbol)
 {
-	//TODO get symbol from Enum
 	this->color = color;
 
 	this->x = x;

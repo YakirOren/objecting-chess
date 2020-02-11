@@ -46,14 +46,15 @@ Board::~Board()
 {
 	for (int x = 0; x < BOARD_SIZE; x++) {
 		for (int y = 0; y < BOARD_SIZE; y++) {
-			if (&this->board[x][y] != nullptr)
+			if (this->board[x][y] != nullptr)
 			{
 				delete this->board[x][y];
 			}
 		}
-		//delete this->board[x];
+		delete[] this->board[x];
 	}
-	//delete this->board;
+
+	delete[] this->board;
 }
 
 void Board::draw() const
@@ -72,19 +73,6 @@ void Board::draw() const
 		std::cout << std::endl;
 	}
 
-	printf("DEBUG[Board] ");
-	for (int x = 0; x < BOARD_SIZE; x++) {
-		for (int y = 0; y < BOARD_SIZE; y++) {
-			if ((*this)(x, y) == nullptr) {
-				printf("%c", empty);
-			}
-			else {
-				printf("%c", ((*this)(x, y)->getSymbol()));
-			}
-
-		}
-	}
-	std::cout << this->playerTurn << std::endl;
 }
 
 
@@ -110,12 +98,12 @@ moves the src to the dst
 
 */
 
-bool Board::updateBoard(const int& srcX, const int& srcY, const int& dstX, const int& dstY)
+bool Board::updateBoard(const int& srcX, const int& srcY, const int& dstX, const int& dstY, const bool& deleteTheThing)
 {
 	bool gotUpdated = true;
-	if (this->board[dstX][dstY] != nullptr)
+	if (this->board[dstX][dstY] != nullptr && deleteTheThing)
 	{
-		//delete[] this->board[dstX][dstY];
+		delete this->board[dstX][dstY];
 	}
 	this->board[dstX][dstY] = this->board[srcX][srcY];
 	this->board[srcX][srcY]->setPos(dstX, dstY);

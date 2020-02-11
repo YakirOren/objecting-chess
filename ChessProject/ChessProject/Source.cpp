@@ -1,9 +1,3 @@
-/*
-This file servers as an example of how to use Pipe.h file.
-It is recommended to use the following code in your project,
-in order to read and write information from and to the Backend
-*/
-
 #include "Pipe.h"
 #include "stdafx.h"
 #include "ath.h"
@@ -18,8 +12,6 @@ using std::string;
 
 int main()
 {
-
-	//system("..\\..\\chessGraphics.exe");
 
 	srand(time_t(NULL));
 
@@ -49,17 +41,13 @@ int main()
 
 		if ((retCode[0] = chessUtills::isValidCords(board, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) == valid)
 		{
-			/*
-			TODO bonus?
-			valid_checkmate = 8,
-			*/
 			isMovable = board(boardCords[0], boardCords[1])->canMoveTo(board, boardCords[2], boardCords[3]);
 
 			// if canMove returned ok
 			if (isMovable == yes_valid) {
 				// if it wont check the king next turn
 				if (!chessUtills::willCheckNextTurn(board, board.getPlayerTurn() ? colors::white : colors::black, boardCords[0], boardCords[1], boardCords[2], boardCords[3])) {
-					board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3]);
+					board.updateBoard(boardCords[0], boardCords[1], boardCords[2], boardCords[3], true);
 					if (chessUtills::isThereCheckForColor(board, board.getPlayerTurn())) {
 						retCode[0] = valid_check;
 					}
@@ -85,10 +73,9 @@ int main()
 		board.draw();
 		chessUtills::getMsg(p, &msgFromGraphics);
 	}
-	
+
 	p->close();
-	//delete &board;
-	//delete[] boardCords;
-	//system("pause");
+	delete& board;
+	delete[] boardCords;
 	return 0;
 }
