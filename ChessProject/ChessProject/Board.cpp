@@ -109,6 +109,7 @@ void Board::nextTurn()
 moves the src to the dst
 
 */
+
 bool Board::updateBoard(const int& srcX, const int& srcY, const int& dstX, const int& dstY)
 {
 	bool gotUpdated = true;
@@ -126,4 +127,3 @@ void Board::setPiece(Piece* piece, const int& dstX, const int& dstY)
 {
 	this->board[dstX][dstY] = piece;
 }
-

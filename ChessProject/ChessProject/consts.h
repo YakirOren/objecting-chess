@@ -20,7 +20,7 @@ enum symbol
 };
 
 // BOARD
-#define BOARD_LAYOUT "##############pp####n###p#########kr#####r########K#############1"
+#define BOARD_LAYOUT "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR0"
 //#define BOARD_LAYOUT "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR0"
 #define BOARD_SIZE 8
 
